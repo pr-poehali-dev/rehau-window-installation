@@ -5,10 +5,18 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 
 export default function Index() {
   const [isSticky, setIsSticky] = useState(false);
+  const [currentH1, setCurrentH1] = useState(0);
+
+  const h1Variants = [
+    "Окна Rehau для вашего дома мечты: тепло, тишина и уют на 50 лет",
+    "Превратите стройку в дом: немецкие окна Rehau с установкой за 3 дня и гарантией 10 лет",
+    "Строите дом во Владивостоке? Защитите семью от холода и ветра премиальными окнами Rehau"
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +24,13 @@ export default function Index() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentH1((prev) => (prev + 1) % h1Variants.length);
+    }, 8000);
+    return () => clearInterval(timer);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -26,36 +41,36 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isSticky ? 'bg-white shadow-lg py-3' : 'bg-white/95 backdrop-blur-sm py-5'
+          isSticky ? 'bg-white shadow-lg py-2' : 'bg-white/98 backdrop-blur-sm py-4'
         }`}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-primary">Геометрия Уюта</div>
           
           <nav className="hidden md:flex gap-6">
-            <button onClick={() => scrollToSection('advantages')} className="text-sm hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('advantages')} className="text-sm font-medium hover:text-accent transition-colors">
               Преимущества
             </button>
-            <button onClick={() => scrollToSection('process')} className="text-sm hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('process')} className="text-sm font-medium hover:text-accent transition-colors">
               Процесс
             </button>
-            <button onClick={() => scrollToSection('portfolio')} className="text-sm hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('portfolio')} className="text-sm font-medium hover:text-accent transition-colors">
               Примеры
             </button>
-            <button onClick={() => scrollToSection('pricing')} className="text-sm hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('pricing')} className="text-sm font-medium hover:text-accent transition-colors">
               Цены
             </button>
-            <button onClick={() => scrollToSection('reviews')} className="text-sm hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('reviews')} className="text-sm font-medium hover:text-accent transition-colors">
               Отзывы
             </button>
           </nav>
           
           <div className="flex items-center gap-4">
-            <a href="tel:+74232000000" className="hidden md:flex items-center gap-2 text-lg font-semibold text-primary">
+            <a href="tel:+74232000000" className="hidden lg:flex items-center gap-2 text-lg font-semibold text-primary">
               <Icon name="Phone" size={20} />
               +7 (423) 200-00-00
             </a>
-            <Button onClick={() => scrollToSection('cta')} className="bg-accent hover:bg-accent/90 animate-pulse-slow">
+            <Button onClick={() => scrollToSection('cta')} className="bg-accent hover:bg-accent/90 rounded-full px-6">
               Заказать замер
             </Button>
           </div>
@@ -65,64 +80,65 @@ export default function Index() {
       <section 
         className="relative min-h-screen flex items-center pt-20"
         style={{
-          backgroundImage: `linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.85)), url('https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg')`,
+          backgroundImage: `linear-gradient(rgba(30, 64, 175, 0.75), rgba(30, 64, 175, 0.88)), url('https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
         }}
       >
         <div className="container mx-auto px-4 py-20">
-          <div className="max-w-4xl mx-auto text-center text-white animate-fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Окна Rehau для вашего дома мечты: тепло, тишина и уют на 50 лет
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in" key={currentH1}>
+              {h1Variants[currentH1]}
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90">
+            <p className="text-xl md:text-2xl mb-10 text-white/95 animate-fade-in">
               Немецкое качество, безупречный монтаж по ГОСТу и честная цена. Более 500 загородных домов во Владивостоке доверили нам свой комфорт
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-scale-in">
               <Button 
                 size="lg" 
                 onClick={() => scrollToSection('cta')}
-                className="bg-accent hover:bg-accent/90 text-white text-lg px-8 py-6 h-auto"
+                className="bg-accent hover:bg-accent/90 text-white text-lg px-10 py-7 h-auto rounded-full shadow-2xl"
               >
                 Вызвать замерщика бесплатно
               </Button>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
                 <Icon name="CalendarCheck" size={32} className="text-accent" />
-                <span className="text-left">Выезд в день обращения</span>
+                <span className="text-left text-sm font-medium">Выезд в день обращения</span>
               </div>
-              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
                 <Icon name="Clock" size={32} className="text-accent" />
-                <span className="text-left">Расчёт сметы за 15 минут</span>
+                <span className="text-left text-sm font-medium">Расчёт сметы за 15 минут</span>
               </div>
-              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
                 <Icon name="Shield" size={32} className="text-accent" />
-                <span className="text-left">Гарантия 10 лет</span>
+                <span className="text-left text-sm font-medium">Гарантия 10 лет</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white" id="advantages">
+      <section className="py-24 bg-white" id="advantages">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             <div className="animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              <Badge className="mb-4 bg-red-100 text-red-700 hover:bg-red-100">Проблема</Badge>
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
                 Вы строите дом мечты... Но одна ошибка с окнами может всё испортить
               </h2>
-              <p className="text-lg mb-4 text-muted-foreground">
+              <p className="text-lg mb-4 text-muted-foreground leading-relaxed">
                 Вы вложили миллионы в фундамент, стены, крышу. Но большинство семей сталкивается с неприятным открытием: дешёвые или неправильно установленные окна превращают мечту в источник постоянного стресса — сквозняки, промерзание, высокие счета за отопление.
               </p>
-              <p className="text-lg font-semibold text-primary">
+              <p className="text-xl font-semibold text-primary mb-6">
                 Вы создаёте дом на десятилетия. Каждое решение критически важно.
               </p>
-              <div className="mt-6 p-4 bg-muted rounded-lg border-l-4 border-accent">
-                <p className="text-sm italic">
+              <div className="p-5 bg-red-50 rounded-xl border-l-4 border-red-500">
+                <p className="text-sm italic text-red-900">
                   «По данным экспертов, неправильный выбор или монтаж окон ведёт к 40% теплопотерь в доме»
                 </p>
               </div>
@@ -131,42 +147,99 @@ export default function Index() {
               <img 
                 src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/880f32ee-437e-48e6-9f54-4fe7c0736daf.jpg"
                 alt="Установка окон" 
-                className="rounded-lg shadow-2xl"
+                className="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             <div className="order-2 md:order-1 animate-scale-in">
               <img 
                 src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/19914709-a12e-40b8-aca4-0b73738fd355.jpg"
-                alt="До и после" 
-                className="rounded-lg shadow-2xl"
+                alt="Последствия экономии" 
+                className="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="order-1 md:order-2 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Хорошая новость: правильные окна решают все эти проблемы навсегда
+              <Badge className="mb-4 bg-orange-100 text-orange-700 hover:bg-orange-100">Реальная история</Badge>
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+                Сэкономили 100 000₽ на окнах? Приготовьтесь потерять в 5 раз больше
               </h2>
-              <p className="text-lg mb-4 text-muted-foreground">
-                Представьте абсолютную тишину и уют даже в приморский мороз — это реальность с окнами Rehau, установленными по ГОСТу.
+              <p className="text-lg mb-4 text-muted-foreground leading-relaxed">
+                Семья из Артёма заказала окна у непроверенной компании, сэкономив 120 тыс руб. Через полгода — промерзание углов, ремонт, замена окон, перерасход <span className="font-bold text-red-600">580 тыс руб</span> и три месяца стресса.
               </p>
-              <p className="text-lg mb-6 text-muted-foreground">
-                Клиенты экономят до 30% на отоплении, получают безопасность для детей и стильный вид дома.
+              <p className="text-lg mb-6 text-muted-foreground leading-relaxed">
+                Здоровье семьи под угрозой, счета за отопление растут на 15–25 тыс руб за сезон, нервы и время — потрачены впустую.
               </p>
-              <div className="p-4 bg-primary/5 rounded-lg border-l-4 border-primary">
-                <p className="text-sm italic">
-                  «Окна Rehau – лучшее вложение. Зимой тепло, счета ниже» — Михаил Соколов, Владивосток
+              <div className="p-5 bg-orange-50 rounded-xl border-l-4 border-orange-500">
+                <p className="text-sm italic text-orange-900">
+                  «67% владельцев домов, выбравших бюджетные окна, меняют их в первые 5 лет эксплуатации»
                 </p>
               </div>
             </div>
           </div>
+
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
+            <div className="animate-fade-in">
+              <Badge className="mb-4 bg-green-100 text-green-700 hover:bg-green-100">Решение</Badge>
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+                Хорошая новость: правильные окна решают все эти проблемы навсегда
+              </h2>
+              <p className="text-lg mb-4 text-muted-foreground leading-relaxed">
+                Представьте абсолютную тишину и уют даже в приморский мороз — это реальность с окнами Rehau, установленными по ГОСТу.
+              </p>
+              <p className="text-lg mb-6 text-muted-foreground leading-relaxed">
+                Клиенты экономят до 30% на отоплении, получают безопасность для детей и стильный вид дома.
+              </p>
+              <div className="p-5 bg-green-50 rounded-xl border-l-4 border-green-500">
+                <p className="text-sm italic text-green-900">
+                  «Окна Rehau – лучшее вложение. Зимой тепло, счета ниже» — Михаил Соколов, Владивосток
+                </p>
+              </div>
+            </div>
+            <div className="animate-scale-in">
+              <img 
+                src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg"
+                alt="Счастливая семья" 
+                className="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+
+          <Card className="bg-gradient-to-br from-primary to-primary/90 text-white border-0 shadow-2xl">
+            <CardContent className="p-10 md:p-16">
+              <Badge className="mb-6 bg-premium text-premium-foreground hover:bg-premium text-lg px-4 py-1">Premium</Badge>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+                «Геометрия Уюта» + Rehau = формула идеального дома
+              </h2>
+              <p className="text-xl mb-6 text-white/95 leading-relaxed">
+                Немецкий бренд с 70-летним опытом, монтаж по ГОСТу, собственная бригада, честный подход. Более 500 домов и 98% довольных клиентов.
+              </p>
+              <div className="grid md:grid-cols-3 gap-8 mb-8">
+                <div className="text-center">
+                  <div className="text-5xl font-bold text-accent mb-2">12</div>
+                  <div className="text-white/80">лет работы</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-5xl font-bold text-accent mb-2">500+</div>
+                  <div className="text-white/80">объектов</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-5xl font-bold text-accent mb-2">0</div>
+                  <div className="text-white/80">судебных споров</div>
+                </div>
+              </div>
+              <p className="text-lg text-white/90">
+                Бесплатный выезд замерщика, честная смета, гарантия до 10 лет.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-primary to-primary/90 text-white" id="process">
+      <section className="py-24 bg-gradient-to-br from-primary via-primary/95 to-primary text-white" id="process">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20">
             От звонка до новоселья: как проходит работа
           </h2>
           
@@ -178,18 +251,18 @@ export default function Index() {
               { icon: 'Factory', title: 'Изготовление на заводе Rehau', desc: 'Бесплатная доставка на объект' },
               { icon: 'Wrench', title: 'Монтаж под ключ', desc: 'Гарантия, послепродажная поддержка' },
             ].map((step, index) => (
-              <div key={index} className="flex gap-6 mb-8 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div key={index} className="flex gap-8 mb-10 animate-fade-in" style={{ animationDelay: `${index * 0.15}s` }}>
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-xl">
                     {index + 1}
                   </div>
                 </div>
-                <div className="flex-1 bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Icon name={step.icon as any} size={24} className="text-accent" />
-                    <h3 className="text-xl font-bold">{step.title}</h3>
+                <div className="flex-1 bg-white/15 backdrop-blur-md rounded-2xl p-8 hover:bg-white/20 transition-all">
+                  <div className="flex items-center gap-4 mb-3">
+                    <Icon name={step.icon as any} size={28} className="text-accent" />
+                    <h3 className="text-2xl font-bold">{step.title}</h3>
                   </div>
-                  <p className="text-white/80">{step.desc}</p>
+                  <p className="text-white/85 text-lg">{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -197,23 +270,31 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 bg-white" id="portfolio">
+      <section className="py-24 bg-white" id="portfolio">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
             Более 500 домов во Владивостоке доверили нам свой комфорт
           </h2>
+          <p className="text-xl text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
+            Каждый проект — это история семьи, которая получила дом мечты
+          </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[1, 2, 3, 4, 5, 6].map((item) => (
-              <Card key={item} className="overflow-hidden hover:shadow-xl transition-shadow animate-scale-in">
-                <img 
-                  src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg"
-                  alt={`Проект ${item}`}
-                  className="w-full h-64 object-cover"
-                />
-                <CardContent className="p-4">
-                  <p className="font-semibold">Коттедж в {item % 2 === 0 ? 'Соловей-Ключ' : 'Штыково'}</p>
-                  <p className="text-sm text-muted-foreground">Установлено {5 + item} окон Rehau</p>
+              <Card key={item} className="overflow-hidden hover:shadow-2xl transition-all duration-300 group border-0 animate-scale-in">
+                <div className="relative overflow-hidden">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg"
+                    alt={`Проект ${item}`}
+                    className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <Badge className="bg-accent text-white">Rehau</Badge>
+                  </div>
+                </div>
+                <CardContent className="p-6">
+                  <p className="font-bold text-lg mb-1">Коттедж в {item % 2 === 0 ? 'Соловей-Ключ' : 'Штыково'}</p>
+                  <p className="text-muted-foreground">Установлено {5 + item} окон Rehau</p>
                 </CardContent>
               </Card>
             ))}
@@ -221,49 +302,52 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 bg-muted" id="pricing">
+      <section className="py-24 bg-muted" id="pricing">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
             Честные цены без скрытых доплат
           </h2>
+          <p className="text-xl text-center text-muted-foreground mb-16">
+            Все расчёты прозрачны — вы знаете, за что платите
+          </p>
           
-          <div className="max-w-5xl mx-auto mb-12">
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="max-w-5xl mx-auto mb-16">
+            <Card className="shadow-2xl border-0 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-primary text-white">
                     <tr>
-                      <th className="px-6 py-4 text-left">Тип окна</th>
-                      <th className="px-6 py-4 text-left">Профиль</th>
-                      <th className="px-6 py-4 text-left">Размер</th>
-                      <th className="px-6 py-4 text-right">Цена</th>
+                      <th className="px-6 py-5 text-left font-bold">Тип окна</th>
+                      <th className="px-6 py-5 text-left font-bold">Профиль</th>
+                      <th className="px-6 py-5 text-left font-bold">Размер</th>
+                      <th className="px-6 py-5 text-right font-bold">Цена</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="bg-white">
                     {[
                       { type: 'Глухое окно', profile: 'Blitz 60', size: '1200×1400', price: '12 500' },
                       { type: 'Поворотно-откидное', profile: 'Blitz 60', size: '1200×1400', price: '18 900' },
                       { type: 'Двустворчатое', profile: 'Grazio 70', size: '1500×1400', price: '24 500' },
                       { type: 'Панорамное', profile: 'Delight 70', size: '2500×2200', price: '85 000' },
                     ].map((item, index) => (
-                      <tr key={index} className="border-b hover:bg-muted/50 transition-colors">
-                        <td className="px-6 py-4">{item.type}</td>
-                        <td className="px-6 py-4 text-muted-foreground">{item.profile}</td>
-                        <td className="px-6 py-4 text-muted-foreground">{item.size} мм</td>
-                        <td className="px-6 py-4 text-right font-bold text-primary">{item.price} ₽</td>
+                      <tr key={index} className="border-b hover:bg-muted/30 transition-colors">
+                        <td className="px-6 py-5 font-medium">{item.type}</td>
+                        <td className="px-6 py-5 text-muted-foreground">{item.profile}</td>
+                        <td className="px-6 py-5 text-muted-foreground">{item.size} мм</td>
+                        <td className="px-6 py-5 text-right font-bold text-primary text-lg">{item.price} ₽</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-            </div>
+            </Card>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-primary text-white">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4">В стоимость включено:</h3>
-                <div className="grid md:grid-cols-2 gap-4">
+            <Card className="bg-primary text-white border-0 shadow-2xl">
+              <CardContent className="p-10">
+                <h3 className="text-3xl font-bold mb-6">В стоимость включено:</h3>
+                <div className="grid md:grid-cols-2 gap-5 mb-8">
                   {[
                     'Профиль Rehau (оригинал)',
                     'Фурнитура Siegenia',
@@ -274,15 +358,15 @@ export default function Index() {
                     'Вывоз мусора',
                     'Гарантия 10 лет'
                   ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <Icon name="Check" size={20} className="text-accent flex-shrink-0" />
-                      <span>{item}</span>
+                    <div key={index} className="flex items-center gap-3">
+                      <Icon name="Check" size={24} className="text-accent flex-shrink-0" />
+                      <span className="text-lg">{item}</span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 p-4 bg-accent rounded-lg">
-                  <p className="text-lg font-bold">🎁 Специальное предложение до 31.10.2025:</p>
-                  <p>Остекление всего дома — скидка 15%. Заказ от 10 окон — москитные сетки в подарок!</p>
+                <div className="p-6 bg-accent rounded-2xl">
+                  <p className="text-xl font-bold mb-2">🎁 Специальное предложение до 31.10.2025:</p>
+                  <p className="text-lg">Остекление всего дома — скидка 15%. Заказ от 10 окон — москитные сетки в подарок!</p>
                 </div>
               </CardContent>
             </Card>
@@ -290,51 +374,104 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 bg-white" id="reviews">
+      <section className="py-24 bg-white" id="guarantees">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
+            Ваша безопасность — наша репутация
+          </h2>
+          <p className="text-xl text-center text-muted-foreground mb-16">
+            Мы берём на себя все риски и гарантируем результат
+          </p>
+
+          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+            {[
+              { icon: 'FileText', title: 'Официальный договор', desc: 'Юридическая защита клиента' },
+              { icon: 'ShieldCheck', title: 'Страхование ответственности', desc: 'До 5 млн рублей' },
+              { icon: 'CalendarClock', title: 'Соблюдение сроков', desc: 'Штраф 1% в день за просрочку' },
+              { icon: 'Wallet', title: 'Поэтапная оплата', desc: 'Без предоплаты за монтаж' },
+              { icon: 'Wrench', title: 'Бесплатное обслуживание', desc: 'В первый год эксплуатации' },
+              { icon: 'Headset', title: 'Техподдержка 24/7', desc: 'Ответ в течение часа' }
+            ].map((item, index) => (
+              <Card key={index} className="hover:shadow-xl transition-all border-0 animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name={item.icon as any} size={32} className="text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white" id="reviews">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
             Что говорят о нас владельцы загородных домов
           </h2>
+          <p className="text-xl text-center text-muted-foreground mb-16">
+            Реальные отзывы реальных людей
+          </p>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
             {[
-              { name: 'Анна и Дмитрий Ковалёвы', area: 'Трудовое', text: 'Договор, фиксированная цена, быстрая установка. Зимой при -18°C дома тепло и тихо. Рекомендуем!' },
-              { name: 'Сергей Михайлов', area: 'Штыково', text: 'Заказывали окна для нового дома. Замерщик приехал в тот же день, всё объяснил. Монтаж выполнили за 2 дня.' },
-              { name: 'Елена Волкова', area: 'Соловей-Ключ', text: 'Счета за отопление снизились на треть! Окна не потеют, фурнитура работает идеально. Спасибо!' }
+              { name: 'Анна и Дмитрий Ковалёвы', area: 'Трудовое', text: 'Договор, фиксированная цена, быстрая установка. Зимой при -18°C дома тепло и тихо. Рекомендуем!', photo: '👨‍👩‍👧' },
+              { name: 'Сергей Михайлов', area: 'Штыково', text: 'Заказывали окна для нового дома. Замерщик приехал в тот же день, всё объяснил. Монтаж выполнили за 2 дня.', photo: '👨‍💼' },
+              { name: 'Елена Волкова', area: 'Соловей-Ключ', text: 'Счета за отопление снизились на треть! Окна не потеют, фурнитура работает идеально. Спасибо!', photo: '👩' }
             ].map((review, index) => (
-              <Card key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardContent className="p-6">
+              <Card key={index} className="animate-fade-in border-0 shadow-lg hover:shadow-xl transition-all" style={{ animationDelay: `${index * 0.1}s` }}>
+                <CardContent className="p-8">
                   <div className="flex gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Icon key={i} name="Star" size={20} className="fill-accent text-accent" />
                     ))}
                   </div>
-                  <p className="mb-4 text-muted-foreground">{review.text}</p>
-                  <div className="font-semibold">{review.name}</div>
-                  <div className="text-sm text-muted-foreground">{review.area}</div>
+                  <p className="mb-6 text-muted-foreground leading-relaxed">{review.text}</p>
+                  <div className="flex items-center gap-3">
+                    <div className="text-4xl">{review.photo}</div>
+                    <div>
+                      <div className="font-bold">{review.name}</div>
+                      <div className="text-sm text-muted-foreground">{review.area}</div>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <div className="flex justify-center gap-8 mt-12">
+          <div className="flex justify-center gap-12">
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary">4.9</div>
-              <div className="text-sm text-muted-foreground">2GIS</div>
+              <div className="text-5xl font-bold text-primary mb-2">4.9</div>
+              <div className="flex gap-1 justify-center mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Icon key={i} name="Star" size={20} className="fill-accent text-accent" />
+                ))}
+              </div>
+              <div className="text-muted-foreground">2GIS</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary">4.8</div>
-              <div className="text-sm text-muted-foreground">Google</div>
+              <div className="text-5xl font-bold text-primary mb-2">4.8</div>
+              <div className="flex gap-1 justify-center mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Icon key={i} name="Star" size={20} className="fill-accent text-accent" />
+                ))}
+              </div>
+              <div className="text-muted-foreground">Google</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-muted">
+      <section className="py-24 bg-muted">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Ответы на частые вопросы
           </h2>
+          <p className="text-lg text-center text-muted-foreground mb-12">
+            Всё, что вы хотели знать об установке окон Rehau
+          </p>
           
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible>
@@ -345,11 +482,11 @@ export default function Index() {
                 { q: 'Какой профиль выбрать для загородного дома?', a: 'Рекомендуем минимум 5-камерный профиль Grazio 70 или Delight 70 для максимальной теплоизоляции и звукоизоляции.' },
                 { q: 'Входит ли демонтаж старых окон в стоимость?', a: 'Да, для замены окон демонтаж входит в стоимость. Для новостроек демонтаж не требуется.' }
               ].map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left font-semibold">
+                <AccordionItem key={index} value={`item-${index}`} className="border-b border-border">
+                  <AccordionTrigger className="text-left font-semibold text-lg hover:text-primary py-6">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
+                  <AccordionContent className="text-muted-foreground text-base pb-6">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -359,59 +496,59 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-accent to-accent/90 text-white" id="cta">
+      <section className="py-24 bg-gradient-to-br from-accent via-accent/95 to-accent/90 text-white" id="cta">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
               Закажите бесплатный замер — и получите честный расчёт за 15 минут
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-10 text-white/95">
               Специалист приедет, проведёт замеры, рассчитает стоимость и ответит на вопросы. Никаких обязательств.
             </p>
             
-            <Card className="bg-white text-foreground">
-              <CardContent className="p-8">
-                <form className="space-y-4">
-                  <div>
-                    <Label htmlFor="name">Имя</Label>
-                    <Input id="name" placeholder="Как к вам обращаться?" className="mt-1" />
+            <Card className="bg-white text-foreground border-0 shadow-2xl">
+              <CardContent className="p-10">
+                <form className="space-y-5">
+                  <div className="text-left">
+                    <Label htmlFor="name" className="text-base font-semibold">Имя</Label>
+                    <Input id="name" placeholder="Как к вам обращаться?" className="mt-2 h-12 text-base" />
                   </div>
-                  <div>
-                    <Label htmlFor="phone">Телефон</Label>
-                    <Input id="phone" type="tel" placeholder="+7 (___) ___-__-__" className="mt-1" />
+                  <div className="text-left">
+                    <Label htmlFor="phone" className="text-base font-semibold">Телефон</Label>
+                    <Input id="phone" type="tel" placeholder="+7 (___) ___-__-__" className="mt-2 h-12 text-base" />
                   </div>
-                  <div>
-                    <Label htmlFor="address">Адрес объекта</Label>
-                    <Input id="address" placeholder="Где находится ваш дом?" className="mt-1" />
+                  <div className="text-left">
+                    <Label htmlFor="address" className="text-base font-semibold">Адрес объекта</Label>
+                    <Input id="address" placeholder="Где находится ваш дом?" className="mt-2 h-12 text-base" />
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-3 text-left">
                     <Checkbox id="bonus" />
-                    <label htmlFor="bonus" className="text-sm">
+                    <label htmlFor="bonus" className="text-base font-medium cursor-pointer">
                       Получить дизайн-проект в подарок
                     </label>
                   </div>
-                  <div className="flex items-start space-x-2">
+                  <div className="flex items-start space-x-3 text-left">
                     <Checkbox id="privacy" />
-                    <label htmlFor="privacy" className="text-xs text-muted-foreground">
+                    <label htmlFor="privacy" className="text-sm text-muted-foreground cursor-pointer">
                       Я принимаю условия политики конфиденциальности
                     </label>
                   </div>
-                  <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-white text-lg py-6 h-auto">
+                  <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-white text-lg py-7 h-auto rounded-full shadow-xl">
                     Заказать бесплатный замер
                   </Button>
                 </form>
                 
-                <div className="mt-6 space-y-2 text-sm text-muted-foreground">
+                <div className="mt-8 space-y-3 text-sm text-muted-foreground">
                   <div className="flex items-center justify-center gap-2">
-                    <Icon name="Clock" size={16} />
+                    <Icon name="Clock" size={18} />
                     <span>Ответим в течение 5 минут</span>
                   </div>
                   <div className="flex items-center justify-center gap-2">
-                    <Icon name="Car" size={16} />
+                    <Icon name="Car" size={18} />
                     <span>Выезд в день обращения</span>
                   </div>
                   <div className="flex items-center justify-center gap-2">
-                    <Icon name="Wallet" size={16} />
+                    <Icon name="Wallet" size={18} />
                     <span>Расчёт стоимости бесплатно</span>
                   </div>
                 </div>
@@ -421,55 +558,95 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="bg-primary text-white py-12">
+      <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Всё ещё сомневаетесь? Получите бесплатную консультацию эксперта
+            </h2>
+            <p className="text-lg mb-8 text-white/90">
+              Оставьте заявку — эксперт приедет, ответит на вопросы о профильных решениях и стоимости
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+              <Input placeholder="Ваше имя" className="h-14 text-base bg-white/10 border-white/20 text-white placeholder:text-white/60" />
+              <Input type="tel" placeholder="+7 (___) ___-__-__" className="h-14 text-base bg-white/10 border-white/20 text-white placeholder:text-white/60" />
+              <Button size="lg" className="bg-white text-primary hover:bg-white/90 h-14 px-8 rounded-full font-semibold">
+                Получить консультацию
+              </Button>
+            </div>
+            
+            <p className="text-sm text-accent font-semibold animate-pulse-slow">
+              ⏰ Осталось 3 места на бесплатный выезд на этой неделе
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-foreground text-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-10 mb-12">
             <div>
-              <h3 className="text-xl font-bold mb-4">Контакты</h3>
-              <div className="space-y-2 text-white/80">
-                <p className="font-semibold text-white">Геометрия Уюта</p>
+              <h3 className="text-2xl font-bold mb-6 text-accent">Геометрия Уюта</h3>
+              <p className="text-white/70 mb-4">
+                Немецкое качество окон для вашего дома
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-bold mb-4">Контакты</h3>
+              <div className="space-y-3 text-white/80 text-sm">
                 <p>г. Владивосток</p>
-                <p>Тел.: +7 (423) 200-00-00</p>
-                <p>Email: info@geometriya-uyuta.ru</p>
-                <p>Режим работы: Пн-Вс 9:00-20:00</p>
+                <p className="font-semibold text-white">+7 (423) 200-00-00</p>
+                <p>info@geometriya-uyuta.ru</p>
+                <p>Режим: Пн-Вс 9:00-20:00</p>
               </div>
             </div>
             
             <div>
-              <h3 className="text-xl font-bold mb-4">Быстрые ссылки</h3>
+              <h3 className="text-lg font-bold mb-4">Навигация</h3>
               <div className="space-y-2">
-                <button onClick={() => scrollToSection('advantages')} className="block text-white/80 hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('advantages')} className="block text-white/80 hover:text-white transition-colors text-sm">
                   О компании
                 </button>
-                <button onClick={() => scrollToSection('portfolio')} className="block text-white/80 hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('portfolio')} className="block text-white/80 hover:text-white transition-colors text-sm">
                   Наши работы
                 </button>
-                <button onClick={() => scrollToSection('pricing')} className="block text-white/80 hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('pricing')} className="block text-white/80 hover:text-white transition-colors text-sm">
                   Цены
                 </button>
-                <button onClick={() => scrollToSection('reviews')} className="block text-white/80 hover:text-white transition-colors">
+                <button onClick={() => scrollToSection('reviews')} className="block text-white/80 hover:text-white transition-colors text-sm">
                   Отзывы
                 </button>
               </div>
             </div>
             
             <div>
-              <h3 className="text-xl font-bold mb-4">Социальные сети</h3>
-              <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                  <Icon name="MessageCircle" size={20} />
+              <h3 className="text-lg font-bold mb-4">Социальные сети</h3>
+              <div className="flex gap-3 mb-6">
+                <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                  <Icon name="MessageCircle" size={22} />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                  <Icon name="Send" size={20} />
+                <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                  <Icon name="Send" size={22} />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                  <Icon name="Phone" size={20} />
+                <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                  <Icon name="Phone" size={22} />
                 </a>
+              </div>
+              <div className="mt-4">
+                <Label htmlFor="subscribe" className="text-sm mb-2 block">Подписка на новости</Label>
+                <div className="flex gap-2">
+                  <Input id="subscribe" type="email" placeholder="Email" className="h-10 bg-white/10 border-white/20 text-white placeholder:text-white/60 text-sm" />
+                  <Button size="sm" className="bg-accent hover:bg-accent/90 h-10 px-4">
+                    <Icon name="Send" size={16} />
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
           
-          <div className="border-t border-white/20 pt-8 text-center text-white/60">
+          <div className="border-t border-white/20 pt-8 text-center text-white/60 text-sm">
             <p>© 2025 «Геометрия Уюта». Все права защищены.</p>
           </div>
         </div>
@@ -477,9 +654,9 @@ export default function Index() {
 
       <button
         onClick={() => scrollToSection('cta')}
-        className="fixed bottom-6 right-6 bg-accent hover:bg-accent/90 text-white rounded-full p-4 shadow-2xl z-40 animate-pulse-slow md:hidden"
+        className="fixed bottom-6 right-6 bg-accent hover:bg-accent/90 text-white rounded-full p-5 shadow-2xl z-40 animate-pulse-slow md:hidden"
       >
-        <Icon name="Phone" size={24} />
+        <Icon name="Phone" size={28} />
       </button>
     </div>
   );
