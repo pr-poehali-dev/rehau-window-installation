@@ -7,6 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
 export default function Index() {
   const [isSticky, setIsSticky] = useState(false);
@@ -403,6 +404,19 @@ export default function Index() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
+            До и После: Результат наших работ
+          </h2>
+          <p className="text-xl text-center text-muted-foreground mb-16">
+            Смотрите разницу своими глазами
+          </p>
+
+          <BeforeAfterSlider />
         </div>
       </section>
 
