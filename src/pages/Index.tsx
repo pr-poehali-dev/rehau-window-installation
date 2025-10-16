@@ -417,9 +417,9 @@ export default function Index() {
           
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
             {[
-              { name: 'Анна и Дмитрий Ковалёвы', area: 'Трудовое', text: 'Договор, фиксированная цена, быстрая установка. Зимой при -18°C дома тепло и тихо. Рекомендуем!', photo: '👨‍👩‍👧' },
-              { name: 'Сергей Михайлов', area: 'Штыково', text: 'Заказывали окна для нового дома. Замерщик приехал в тот же день, всё объяснил. Монтаж выполнили за 2 дня.', photo: '👨‍💼' },
-              { name: 'Елена Волкова', area: 'Соловей-Ключ', text: 'Счета за отопление снизились на треть! Окна не потеют, фурнитура работает идеально. Спасибо!', photo: '👩' }
+              { name: 'Анна и Дмитрий Ковалёвы', area: 'Трудовое', text: 'Договор, фиксированная цена, быстрая установка. Зимой при -18°C дома тепло и тихо. Рекомендуем!', photo: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/65495790-fa30-4ea7-a2c2-baed5d509437.jpg' },
+              { name: 'Сергей Михайлов', area: 'Штыково', text: 'Заказывали окна для нового дома. Замерщик приехал в тот же день, всё объяснил. Монтаж выполнили за 2 дня.', photo: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/423c0a75-bfeb-43e8-8939-20e02e8a94ee.jpg' },
+              { name: 'Елена Волкова', area: 'Соловей-Ключ', text: 'Счета за отопление снизились на треть! Окна не потеют, фурнитура работает идеально. Спасибо!', photo: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/da3f41cf-5303-429f-9362-7c4bbd5ddbee.jpg' }
             ].map((review, index) => (
               <Card key={index} className="animate-fade-in border-0 shadow-lg hover:shadow-xl transition-all" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardContent className="p-8">
@@ -429,8 +429,12 @@ export default function Index() {
                     ))}
                   </div>
                   <p className="mb-6 text-muted-foreground leading-relaxed">{review.text}</p>
-                  <div className="flex items-center gap-3">
-                    <div className="text-4xl">{review.photo}</div>
+                  <div className="flex items-center gap-4">
+                    <img 
+                      src={review.photo} 
+                      alt={review.name}
+                      className="w-16 h-16 rounded-full object-cover"
+                    />
                     <div>
                       <div className="font-bold">{review.name}</div>
                       <div className="text-sm text-muted-foreground">{review.area}</div>
