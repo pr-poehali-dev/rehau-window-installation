@@ -463,32 +463,25 @@ export default function Index() {
           
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
             {[
-              { name: 'Анна и Дмитрий Ковалёвы', area: 'Трудовое', text: 'Договор, фиксированная цена, быстрая установка. Зимой при -18°C дома тепло и тихо. Рекомендуем!', photo: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/65495790-fa30-4ea7-a2c2-baed5d509437.jpg' },
-              { name: 'Сергей Михайлов', area: 'Штыково', text: 'Заказывали окна для нового дома. Замерщик приехал в тот же день, всё объяснил. Монтаж выполнили за 2 дня.', photo: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/423c0a75-bfeb-43e8-8939-20e02e8a94ee.jpg' },
-              { name: 'Елена Волкова', area: 'Соловей-Ключ', text: 'Счета за отопление снизились на треть! Окна не потеют, фурнитура работает идеально. Спасибо!', photo: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/da3f41cf-5303-429f-9362-7c4bbd5ddbee.jpg' }
+              { name: 'Александр', stars: 5, text: 'Ребята из «Окна для дома» — настоящие профи. Всё сделали быстро и аккуратно, после себя убрали весь мусор. В помещении стало теплее и тише. Очень довольны результатом и обслуживанием!' },
+              { name: 'Елена', stars: 5, text: 'Обратились в «Окна для дома» по совету друзей. Замерщик приехал вовремя, всё подробно объяснил. Монтажники работали слаженно, поставили окна без единого дефекта. Рекомендую тем, кто ценит качество и чистоту.' },
+              { name: 'Сергей', stars: 5, text: 'Отличная компания! Окна выглядят стильно, фурнитура ходит мягко. Менеджеры дружелюбные, цена прозрачная — без скрытых доплат. Если будете менять окна, смело выбирайте «Окна для дома»!' },
+              { name: 'Наталья', stars: 4, text: 'Работа выполнена добротно, окна герметичные. Мелкие нюансы решили сразу же, без лишней волокиты. Единственное — хотелось бы чуть больше вариантов цвета, но в целом очень даже хорошо.' },
+              { name: 'Игорь', stars: 5, text: 'Порадовала скорость и внимание к деталям. Мастера тщательно измерили проём и аккуратно смонтировали окна. Теперь в доме не холодно и нет уличного шума. Спасибо «Окна для дома» за отличную работу!' }
             ].map((review, index) => (
-              <Card key={index} className="animate-fade-in border-0 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all group" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="overflow-hidden rounded-t-lg">
-                  <img 
-                    src={review.photo} 
-                    alt={review.area}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
+              <Card key={index} className="animate-fade-in border-0 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardContent className="p-6">
                   <div className="flex gap-1 mb-3">
-                    {[...Array(5)].map((_, i) => (
+                    {[...Array(review.stars)].map((_, i) => (
                       <Icon key={i} name="Star" size={18} className="fill-accent text-accent" />
                     ))}
+                    {[...Array(5 - review.stars)].map((_, i) => (
+                      <Icon key={`empty-${i}`} name="Star" size={18} className="text-muted-foreground/30" />
+                    ))}
                   </div>
-                  <p className="mb-4 text-muted-foreground leading-relaxed italic">"{review.text}"</p>
+                  <p className="mb-4 text-muted-foreground leading-relaxed italic">«{review.text}»</p>
                   <div className="pt-4 border-t border-muted">
-                    <div className="font-bold text-foreground">{review.name}</div>
-                    <div className="text-sm text-muted-foreground flex items-center gap-1">
-                      <Icon name="MapPin" size={14} />
-                      {review.area}
-                    </div>
+                    <div className="font-bold text-foreground">— {review.name}</div>
                   </div>
                 </CardContent>
               </Card>
