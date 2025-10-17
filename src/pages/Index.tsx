@@ -307,19 +307,26 @@ export default function Index() {
       <section className="py-24 bg-white" id="portfolio">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
-            Более 500 домов во Владивостоке доверили нам свой комфорт
+            Более 500 новых домов во Владивостоке выбрали наши окна
           </h2>
           <p className="text-xl text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
-            Каждый проект — это история семьи, которая получила дом мечты
+            Остекление новостроек и коттеджей под ключ — комфорт с первого дня
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <Card key={item} className="overflow-hidden hover:shadow-2xl transition-all duration-300 group border-0 animate-scale-in">
+            {[
+              { location: 'Соловей-Ключ', windows: 12, type: 'Коттедж 2 этажа' },
+              { location: 'Штыково', windows: 8, type: 'Таунхаус' },
+              { location: 'Садгород', windows: 15, type: 'Загородный дом' },
+              { location: 'Патрокл', windows: 10, type: 'Коттедж с мансардой' },
+              { location: 'Снеговая Падь', windows: 18, type: 'Особняк' },
+              { location: 'Трудовое', windows: 9, type: 'Дом с верандой' },
+            ].map((item, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-2xl transition-all duration-300 group border-0 animate-scale-in">
                 <div className="relative overflow-hidden">
                   <img 
                     src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg"
-                    alt={`Проект ${item}`}
+                    alt={`Остекление в ${item.location}`}
                     className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
@@ -328,8 +335,9 @@ export default function Index() {
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <p className="font-bold text-lg mb-1">Коттедж в {item % 2 === 0 ? 'Соловей-Ключ' : 'Штыково'}</p>
-                  <p className="text-muted-foreground">Установлено {5 + item} окон Rehau</p>
+                  <p className="font-bold text-lg mb-1">{item.type}</p>
+                  <p className="text-muted-foreground mb-1">{item.location}</p>
+                  <p className="text-sm text-primary font-medium">Установлено {item.windows} окон Rehau</p>
                 </CardContent>
               </Card>
             ))}
