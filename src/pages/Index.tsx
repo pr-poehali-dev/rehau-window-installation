@@ -47,7 +47,7 @@ export default function Index() {
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <img src="https://cdn.poehali.dev/files/b9d273ab-2803-4c62-a0d2-833dde27ddb3.png" alt="Окна для Дома" className="h-10 w-10" />
+            <img src="https://cdn.poehali.dev/files/b9d273ab-2803-4c62-a0d2-833dde27ddb3.png" alt="Окна для Дома" className="h-16 w-16 opacity-80 blur-[0.5px]" />
             <span className="text-2xl font-bold text-primary">Окна для Дома</span>
           </div>
           
