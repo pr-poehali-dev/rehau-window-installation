@@ -8,6 +8,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
+import LeadForm from '@/components/LeadForm';
+import CountdownTimer from '@/components/CountdownTimer';
+import SavingsCalculator from '@/components/SavingsCalculator';
+import WhyUs from '@/components/WhyUs';
+import WhatsAppWidget from '@/components/WhatsAppWidget';
 
 export default function Index() {
   const [isSticky, setIsSticky] = useState(false);
@@ -135,7 +140,19 @@ export default function Index() {
                 <span className="text-left text-sm font-medium">Гарантия 10 лет</span>
               </div>
             </div>
+
+            <div className="max-w-md mx-auto mt-12">
+              <LeadForm variant="dark" />
+            </div>
           </div>
+        </div>
+      </section>
+
+      <WhyUs />
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <CountdownTimer />
         </div>
       </section>
 
@@ -250,6 +267,16 @@ export default function Index() {
               </p>
             </CardContent>
           </Card>
+
+          <div className="mt-16">
+            <LeadForm />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <SavingsCalculator />
         </div>
       </section>
 
@@ -591,28 +618,24 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 bg-primary text-white">
+      <section className="py-20 bg-primary text-white" id="cta">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
+          <div className="max-w-2xl mx-auto text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Всё ещё сомневаетесь? Получите бесплатную консультацию эксперта
             </h2>
             <p className="text-lg mb-8 text-white/90">
               Оставьте заявку — эксперт приедет, ответит на вопросы о профильных решениях и стоимости
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-              <Input placeholder="Ваше имя" className="h-14 text-base bg-white/10 border-white/20 text-white placeholder:text-white/60" />
-              <Input type="tel" placeholder="+7 (___) ___-__-__" className="h-14 text-base bg-white/10 border-white/20 text-white placeholder:text-white/60" />
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 h-14 px-8 rounded-full font-semibold">
-                Получить консультацию
-              </Button>
-            </div>
-            
-            <p className="text-sm text-accent font-semibold animate-pulse-slow">
-              ⏰ Осталось 3 места на бесплатный выезд на этой неделе
-            </p>
           </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <LeadForm variant="dark" compact />
+          </div>
+
+          <p className="text-center text-sm text-accent font-semibold animate-pulse-slow mt-6">
+            ⏰ Осталось 3 места на бесплатный выезд на этой неделе
+          </p>
         </div>
       </section>
 
@@ -680,7 +703,7 @@ export default function Index() {
           </div>
           
           <div className="border-t border-white/20 pt-8 text-center text-white/60 text-sm">
-            <p>© 2025 «Геометрия Уюта». Все права защищены.</p>
+            <p>© 2025 «Окна для Дома». Все права защищены.</p>
           </div>
         </div>
       </footer>
@@ -691,6 +714,8 @@ export default function Index() {
       >
         <Icon name="Phone" size={28} />
       </button>
+
+      <WhatsAppWidget />
     </div>
   );
 }
