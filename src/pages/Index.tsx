@@ -17,6 +17,7 @@ import TelegramWidget from '@/components/WhatsAppWidget';
 export default function Index() {
   const [isSticky, setIsSticky] = useState(false);
   const [currentH1, setCurrentH1] = useState(0);
+  const [currentReview, setCurrentReview] = useState(0);
 
   const h1Variants = [
     "Сохраняйте тепло и экономьте до 40% на отоплении",
@@ -461,32 +462,98 @@ export default function Index() {
             Реальные отзывы реальных людей
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-            {[
+          {(() => {
+            const reviews = [
               { name: 'Александр', stars: 5, text: 'Ребята из «Окна для дома» — настоящие профи. Всё сделали быстро и аккуратно, после себя убрали весь мусор. В помещении стало теплее и тише. Очень довольны результатом и обслуживанием!' },
               { name: 'Елена', stars: 5, text: 'Обратились в «Окна для дома» по совету друзей. Замерщик приехал вовремя, всё подробно объяснил. Монтажники работали слаженно, поставили окна без единого дефекта. Рекомендую тем, кто ценит качество и чистоту.' },
               { name: 'Сергей', stars: 5, text: 'Отличная компания! Окна выглядят стильно, фурнитура ходит мягко. Менеджеры дружелюбные, цена прозрачная — без скрытых доплат. Если будете менять окна, смело выбирайте «Окна для дома»!' },
               { name: 'Наталья', stars: 4, text: 'Работа выполнена добротно, окна герметичные. Мелкие нюансы решили сразу же, без лишней волокиты. Единственное — хотелось бы чуть больше вариантов цвета, но в целом очень даже хорошо.' },
               { name: 'Игорь', stars: 5, text: 'Порадовала скорость и внимание к деталям. Мастера тщательно измерили проём и аккуратно смонтировали окна. Теперь в доме не холодно и нет уличного шума. Спасибо «Окна для дома» за отличную работу!' }
-            ].map((review, index) => (
-              <Card key={index} className="animate-fade-in border-0 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardContent className="p-6">
-                  <div className="flex gap-1 mb-3">
-                    {[...Array(review.stars)].map((_, i) => (
-                      <Icon key={i} name="Star" size={18} className="fill-accent text-accent" />
-                    ))}
-                    {[...Array(5 - review.stars)].map((_, i) => (
-                      <Icon key={`empty-${i}`} name="Star" size={18} className="text-muted-foreground/30" />
+            ];
+
+            const nextReview = () => {
+              setCurrentReview((prev) => (prev + 1) % reviews.length);
+            };
+
+            const prevReview = () => {
+              setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length);
+            };
+
+            return (
+              <>
+                <div className="hidden md:grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+                  {reviews.map((review, index) => (
+                    <Card key={index} className="animate-fade-in border-0 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all" style={{ animationDelay: `${index * 0.1}s` }}>
+                      <CardContent className="p-6">
+                        <div className="flex gap-1 mb-3">
+                          {[...Array(review.stars)].map((_, i) => (
+                            <Icon key={i} name="Star" size={18} className="fill-accent text-accent" />
+                          ))}
+                          {[...Array(5 - review.stars)].map((_, i) => (
+                            <Icon key={`empty-${i}`} name="Star" size={18} className="text-muted-foreground/30" />
+                          ))}
+                        </div>
+                        <p className="mb-4 text-muted-foreground leading-relaxed italic">«{review.text}»</p>
+                        <div className="pt-4 border-t border-muted">
+                          <div className="font-bold text-foreground">— {review.name}</div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+                <div className="md:hidden max-w-xl mx-auto mb-12 relative">
+                  <Card className="border-0 shadow-lg">
+                    <CardContent className="p-6">
+                      <div className="flex gap-1 mb-3">
+                        {[...Array(reviews[currentReview].stars)].map((_, i) => (
+                          <Icon key={i} name="Star" size={18} className="fill-accent text-accent" />
+                        ))}
+                        {[...Array(5 - reviews[currentReview].stars)].map((_, i) => (
+                          <Icon key={`empty-${i}`} name="Star" size={18} className="text-muted-foreground/30" />
+                        ))}
+                      </div>
+                      <p className="mb-4 text-muted-foreground leading-relaxed italic">«{reviews[currentReview].text}»</p>
+                      <div className="pt-4 border-t border-muted">
+                        <div className="font-bold text-foreground">— {reviews[currentReview].name}</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={prevReview}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 rounded-full shadow-lg bg-white hover:bg-accent hover:text-white"
+                  >
+                    <Icon name="ChevronLeft" size={24} />
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={nextReview}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 rounded-full shadow-lg bg-white hover:bg-accent hover:text-white"
+                  >
+                    <Icon name="ChevronRight" size={24} />
+                  </Button>
+
+                  <div className="flex justify-center gap-2 mt-6">
+                    {reviews.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentReview(index)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          index === currentReview ? 'bg-accent w-6' : 'bg-muted-foreground/30'
+                        }`}
+                      />
                     ))}
                   </div>
-                  <p className="mb-4 text-muted-foreground leading-relaxed italic">«{review.text}»</p>
-                  <div className="pt-4 border-t border-muted">
-                    <div className="font-bold text-foreground">— {review.name}</div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </div>
+              </>
+            );
+          })()}
+        </div>
 
           <div className="flex justify-center gap-12">
             <div className="text-center">
