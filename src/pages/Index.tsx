@@ -605,7 +605,7 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-10 mb-12">
             <div>
-              <h3 className="text-2xl font-bold mb-6 text-accent">Геометрия Уюта</h3>
+              <h3 className="text-2xl font-bold mb-6 text-accent">Окна для Дома</h3>
               <p className="text-white/70 mb-4">
                 Немецкое качество окон для вашего дома
               </p>
