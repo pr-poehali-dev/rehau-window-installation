@@ -46,7 +46,7 @@ export default function Index() {
         }`}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-primary">Геометрия Уюта</div>
+          <div className="text-2xl font-bold text-primary">Окна для Дома</div>
           
           <nav className="hidden md:flex gap-6">
             <button onClick={() => scrollToSection('advantages')} className="text-sm font-medium hover:text-accent transition-colors">
