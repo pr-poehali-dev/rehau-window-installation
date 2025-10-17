@@ -553,9 +553,8 @@ export default function Index() {
               </>
             );
           })()}
-        </div>
 
-          <div className="flex justify-center gap-12">
+          <div className="flex justify-center gap-12 mt-12">
             <div className="text-center">
               <div className="text-5xl font-bold text-primary mb-2">4.9</div>
               <div className="flex gap-1 justify-center mb-2">
