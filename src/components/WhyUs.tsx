@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 
@@ -41,6 +42,33 @@ const benefits = [
 ];
 
 export default function WhyUs() {
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(benefits.length).fill(false));
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = cardRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (index !== -1 && entry.isIntersecting) {
+            setVisibleCards((prev) => {
+              const newVisible = [...prev];
+              newVisible[index] = true;
+              return newVisible;
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="py-24 bg-gradient-to-br from-muted/30 to-background">
       <div className="container mx-auto px-4">
@@ -55,7 +83,10 @@ export default function WhyUs() {
           {benefits.map((benefit, index) => (
             <Card
               key={index}
-              className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-fade-in"
+              ref={(el) => (cardRefs.current[index] = el)}
+              className={`border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
+                visibleCards[index] ? 'animate-slide-up' : 'opacity-0'
+              }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-8">

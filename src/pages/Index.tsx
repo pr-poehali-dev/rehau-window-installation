@@ -7,7 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
-import BeforeAfterSlider from '@/components/BeforeAfterSlider';
+
 import LeadForm from '@/components/LeadForm';
 import CountdownTimer from '@/components/CountdownTimer';
 import SavingsCalculator from '@/components/SavingsCalculator';
@@ -49,9 +49,10 @@ export default function Index() {
         <Button
           size="lg"
           onClick={() => scrollToSection('cta')}
-          className="fixed bottom-8 right-8 z-50 bg-accent hover:bg-accent/90 text-white text-lg px-8 py-6 h-auto rounded-full shadow-2xl animate-bounce-slow transform hover:scale-110 transition-all duration-300 font-bold"
+          className="fixed bottom-8 right-8 z-50 bg-accent hover:bg-accent/90 text-white text-lg px-8 py-6 h-auto rounded-full shadow-2xl animate-bounce-slow transform hover:scale-105 transition-all duration-300 font-bold flex items-center gap-2"
         >
-          🏠 Вызвать замерщика
+          <Icon name="Ruler" size={20} />
+          Вызвать замерщика
         </Button>
       )}
       <header 
@@ -88,7 +89,8 @@ export default function Index() {
               <Icon name="Phone" size={20} />
               +7 (423) 200-00-00
             </a>
-            <Button onClick={() => scrollToSection('cta')} className="bg-accent hover:bg-accent/90 rounded-full px-6">
+            <Button onClick={() => scrollToSection('cta')} className="bg-accent hover:bg-accent/90 rounded-full px-6 transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
+              <Icon name="Ruler" size={18} />
               Заказать замер
             </Button>
           </div>
@@ -106,15 +108,17 @@ export default function Index() {
       >
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight animate-fade-in" key={currentH1}>
-              {h1Variants[currentH1]}
-            </h1>
-            <p className="text-2xl md:text-3xl mb-4 text-accent font-semibold animate-fade-in">
-              Герметичные окна премиум-класса с монтажом по ГОСТу
-            </p>
-            <p className="text-lg md:text-xl mb-12 text-white/90 animate-fade-in">
-              Немецкие окна Rehau с гарантией 10 лет. Более 500 довольных семей во Владивостоке
-            </p>
+            <div className="bg-black/40 backdrop-blur-md rounded-3xl p-8 md:p-12 mb-8">
+              <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight animate-fade-in" key={currentH1}>
+                {h1Variants[currentH1]}
+              </h1>
+              <p className="text-2xl md:text-3xl mb-4 text-accent font-semibold animate-fade-in">
+                Герметичные окна премиум-класса с монтажом по ГОСТу
+              </p>
+              <p className="text-lg md:text-xl mb-0 text-white/90 animate-fade-in">
+                Немецкие окна Rehau с гарантией 10 лет. Более 500 довольных семей во Владивостоке
+              </p>
+            </div>
 
             <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
               <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
@@ -428,20 +432,17 @@ export default function Index() {
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
             {[
-              { icon: 'FileText', title: 'Официальный договор', desc: 'Юридическая защита клиента' },
-              { icon: 'ShieldCheck', title: 'Страхование ответственности', desc: 'До 5 млн рублей' },
-              { icon: 'CalendarClock', title: 'Соблюдение сроков', desc: 'Штраф 1% в день за просрочку' },
-              { icon: 'Wallet', title: 'Поэтапная оплата', desc: 'Без предоплаты за монтаж' },
-              { icon: 'Wrench', title: 'Бесплатное обслуживание', desc: 'В первый год эксплуатации' },
-              { icon: 'Headset', title: 'Техподдержка 24/7', desc: 'Ответ в течение часа' }
+              { icon: 'Award', title: '10 лет гарантии', desc: 'Официальная гарантия производителя' },
+              { icon: 'ShieldCheck', title: 'Сертификат качества', desc: 'Европейские стандарты ISO' },
+              { icon: 'Handshake', title: 'Партнёр Rehau', desc: 'Сертифицированная компания' }
             ].map((item, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all border-0 animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} className="hover:shadow-xl transition-all border-2 border-accent/20 bg-gradient-to-br from-white to-accent/5 animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon name={item.icon as any} size={32} className="text-primary" />
+                  <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Icon name={item.icon as any} size={36} className="text-white" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.desc}</p>
+                  <h3 className="text-2xl font-bold mb-3 text-primary">{item.title}</h3>
+                  <p className="text-muted-foreground text-lg">{item.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -449,18 +450,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
-            До и После: Результат наших работ
-          </h2>
-          <p className="text-xl text-center text-muted-foreground mb-16">
-            Смотрите разницу своими глазами
-          </p>
 
-          <BeforeAfterSlider />
-        </div>
-      </section>
 
       <section className="py-24 bg-white" id="reviews">
         <div className="container mx-auto px-4">
@@ -477,23 +467,27 @@ export default function Index() {
               { name: 'Сергей Михайлов', area: 'Штыково', text: 'Заказывали окна для нового дома. Замерщик приехал в тот же день, всё объяснил. Монтаж выполнили за 2 дня.', photo: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/423c0a75-bfeb-43e8-8939-20e02e8a94ee.jpg' },
               { name: 'Елена Волкова', area: 'Соловей-Ключ', text: 'Счета за отопление снизились на треть! Окна не потеют, фурнитура работает идеально. Спасибо!', photo: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/da3f41cf-5303-429f-9362-7c4bbd5ddbee.jpg' }
             ].map((review, index) => (
-              <Card key={index} className="animate-fade-in border-0 shadow-lg hover:shadow-xl transition-all" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardContent className="p-8">
-                  <div className="flex gap-1 mb-4">
+              <Card key={index} className="animate-fade-in border-0 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all group" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="overflow-hidden rounded-t-lg">
+                  <img 
+                    src={review.photo} 
+                    alt={review.area}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <CardContent className="p-6">
+                  <div className="flex gap-1 mb-3">
                     {[...Array(5)].map((_, i) => (
-                      <Icon key={i} name="Star" size={20} className="fill-accent text-accent" />
+                      <Icon key={i} name="Star" size={18} className="fill-accent text-accent" />
                     ))}
                   </div>
-                  <p className="mb-6 text-muted-foreground leading-relaxed">{review.text}</p>
-                  <div className="flex items-center gap-4">
-                    <img 
-                      src={review.photo} 
-                      alt={review.name}
-                      className="w-16 h-16 rounded-full object-cover"
-                    />
-                    <div>
-                      <div className="font-bold">{review.name}</div>
-                      <div className="text-sm text-muted-foreground">{review.area}</div>
+                  <p className="mb-4 text-muted-foreground leading-relaxed italic">"{review.text}"</p>
+                  <div className="pt-4 border-t border-muted">
+                    <div className="font-bold text-foreground">{review.name}</div>
+                    <div className="text-sm text-muted-foreground flex items-center gap-1">
+                      <Icon name="MapPin" size={14} />
+                      {review.area}
                     </div>
                   </div>
                 </CardContent>

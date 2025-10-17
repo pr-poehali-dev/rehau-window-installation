@@ -27,10 +27,16 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
     city: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
     console.log('Форма отправлена:', formData);
+    setIsSubmitting(false);
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
   };
@@ -44,7 +50,7 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
           placeholder="Ваше имя"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className={`h-14 text-base ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
+          className={`h-14 text-base input-focus ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
           required
         />
         <Input
@@ -52,7 +58,7 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
           placeholder="+7 (___) ___-__-__"
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className={`h-14 text-base ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
+          className={`h-14 text-base input-focus ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
           required
         />
         <select
@@ -69,10 +75,22 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
         <Button
           type="submit"
           size="lg"
-          className="bg-accent hover:bg-accent/90 h-14 px-8 rounded-full font-semibold whitespace-nowrap"
-          disabled={submitted}
+          className="bg-accent hover:bg-accent/90 h-14 px-8 rounded-full font-semibold whitespace-nowrap transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+          disabled={submitted || isSubmitting}
         >
-          {submitted ? '✓ Отправлено!' : 'Вызвать замерщика'}
+          {isSubmitting ? (
+            <>
+              <Icon name="Loader2" size={20} className="animate-spin" />
+              Отправка...
+            </>
+          ) : submitted ? (
+            '✓ Отправлено!'
+          ) : (
+            <>
+              <Icon name="Ruler" size={20} />
+              Вызвать замерщика
+            </>
+          )}
         </Button>
       </form>
     );
@@ -103,7 +121,7 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
               placeholder="Иван"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className={`h-12 ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
+              className={`h-12 input-focus ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
               required
             />
           </div>
@@ -116,7 +134,7 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
               placeholder="+7 (___) ___-__-__"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className={`h-12 ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
+              className={`h-12 input-focus ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
               required
             />
           </div>
@@ -140,10 +158,22 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
           <Button
             type="submit"
             size="lg"
-            className="w-full bg-accent hover:bg-accent/90 h-12 rounded-full font-semibold"
-            disabled={submitted}
+            className="w-full bg-accent hover:bg-accent/90 h-12 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+            disabled={submitted || isSubmitting}
           >
-            {submitted ? '✓ Заявка отправлена!' : '🏠 Вызвать замерщика бесплатно'}
+            {isSubmitting ? (
+              <>
+                <Icon name="Loader2" size={20} className="animate-spin" />
+                Отправка...
+              </>
+            ) : submitted ? (
+              '✓ Заявка отправлена!'
+            ) : (
+              <>
+                <Icon name="Ruler" size={20} />
+                Вызвать замерщика бесплатно
+              </>
+            )}
           </Button>
 
           <p className={`text-xs text-center ${isDark ? 'text-white/60' : 'text-muted-foreground'}`}>
