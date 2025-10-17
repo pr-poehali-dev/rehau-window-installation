@@ -455,7 +455,7 @@ export default function Index() {
       <section className="py-24 bg-white" id="reviews">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
-            Что говорят о нас владельцы загородных домов
+            Что говорят о нас наши заказчики
           </h2>
           <p className="text-xl text-center text-muted-foreground mb-16">
             Реальные отзывы реальных людей
