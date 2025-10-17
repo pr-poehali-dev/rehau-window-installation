@@ -96,7 +96,7 @@ export default function Index() {
       </header>
 
       <section 
-        className="relative min-h-screen flex items-center pt-20"
+        className="relative min-h-screen flex items-center pt-20 pb-24 md:pb-20"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg')`,
           backgroundSize: 'cover',
@@ -235,6 +235,7 @@ export default function Index() {
                 src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg"
                 alt="Счастливая семья" 
                 className="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
             </div>
           </div>
@@ -330,6 +331,7 @@ export default function Index() {
                     src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg"
                     alt={`Проект ${item}`}
                     className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
                   />
                   <div className="absolute top-4 right-4">
                     <Badge className="bg-accent text-white">Rehau</Badge>
@@ -708,14 +710,28 @@ export default function Index() {
         </div>
       </footer>
 
-      <button
-        onClick={() => scrollToSection('cta')}
-        className="fixed bottom-6 right-6 bg-accent hover:bg-accent/90 text-white rounded-full p-5 shadow-2xl z-40 animate-pulse-slow md:hidden"
-      >
-        <Icon name="Phone" size={28} />
-      </button>
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t-2 border-accent shadow-2xl p-4">
+        <div className="flex gap-3">
+          <a
+            href="tel:+74232000000"
+            className="flex-1 bg-primary hover:bg-primary/90 text-white rounded-full py-4 px-6 font-bold text-center flex items-center justify-center gap-2 transition-all active:scale-95"
+          >
+            <Icon name="Phone" size={20} />
+            Позвонить
+          </a>
+          <button
+            onClick={() => scrollToSection('cta')}
+            className="flex-1 bg-accent hover:bg-accent/90 text-white rounded-full py-4 px-6 font-bold text-center flex items-center justify-center gap-2 transition-all active:scale-95"
+          >
+            <Icon name="Home" size={20} />
+            Заявка на замер
+          </button>
+        </div>
+      </div>
 
-      <TelegramWidget />
+      <div className="hidden md:block">
+        <TelegramWidget />
+      </div>
     </div>
   );
 }

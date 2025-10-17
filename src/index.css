@@ -128,3 +128,13 @@
 .animate-bounce-slow {
   animation: bounce-slow 2s ease-in-out infinite;
 }
+
+img {
+  content-visibility: auto;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 80px;
+  }
+}
