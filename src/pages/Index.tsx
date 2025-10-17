@@ -46,7 +46,10 @@ export default function Index() {
         }`}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-primary">Окна для Дома</div>
+          <div className="flex items-center gap-3">
+            <img src="https://cdn.poehali.dev/files/b9d273ab-2803-4c62-a0d2-833dde27ddb3.png" alt="Окна для Дома" className="h-10 w-10" />
+            <span className="text-2xl font-bold text-primary">Окна для Дома</span>
+          </div>
           
           <nav className="hidden md:flex gap-6">
             <button onClick={() => scrollToSection('advantages')} className="text-sm font-medium hover:text-accent transition-colors">
@@ -81,7 +84,7 @@ export default function Index() {
       <section 
         className="relative min-h-screen flex items-center pt-20"
         style={{
-          backgroundImage: `linear-gradient(rgba(30, 64, 175, 0.75), rgba(30, 64, 175, 0.88)), url('https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
