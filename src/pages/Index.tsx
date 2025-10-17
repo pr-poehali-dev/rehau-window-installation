@@ -12,7 +12,7 @@ import LeadForm from '@/components/LeadForm';
 import CountdownTimer from '@/components/CountdownTimer';
 import SavingsCalculator from '@/components/SavingsCalculator';
 import WhyUs from '@/components/WhyUs';
-import WhatsAppWidget from '@/components/WhatsAppWidget';
+import TelegramWidget from '@/components/WhatsAppWidget';
 
 export default function Index() {
   const [isSticky, setIsSticky] = useState(false);
@@ -715,7 +715,7 @@ export default function Index() {
         <Icon name="Phone" size={28} />
       </button>
 
-      <WhatsAppWidget />
+      <TelegramWidget />
     </div>
   );
 }
