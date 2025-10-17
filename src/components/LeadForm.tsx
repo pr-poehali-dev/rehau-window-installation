@@ -23,8 +23,7 @@ const cities = [
 export default function LeadForm({ variant = 'light', compact = false }: LeadFormProps) {
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
-    city: ''
+    phone: ''
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,17 +60,7 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
           className={`h-14 text-base input-focus ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
           required
         />
-        <select
-          value={formData.city}
-          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-          className={`h-14 text-base rounded-md border px-4 ${isDark ? 'bg-white/10 border-white/20 text-white' : 'border-input bg-background'}`}
-          required
-        >
-          <option value="">Ваш город</option>
-          {cities.map(city => (
-            <option key={city} value={city}>{city}</option>
-          ))}
-        </select>
+
         <Button
           type="submit"
           size="lg"
@@ -139,21 +128,7 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
             />
           </div>
 
-          <div>
-            <Label htmlFor="city" className={isDark ? 'text-white' : ''}>Ваш город</Label>
-            <select
-              id="city"
-              value={formData.city}
-              onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-              className={`h-12 w-full rounded-md border px-3 ${isDark ? 'bg-white/10 border-white/20 text-white' : 'border-input bg-background'}`}
-              required
-            >
-              <option value="">Выберите город</option>
-              {cities.map(city => (
-                <option key={city} value={city}>{city}</option>
-              ))}
-            </select>
-          </div>
+
 
           <Button
             type="submit"

@@ -17,7 +17,6 @@ const cities = [
 
 export default function SavingsCalculator() {
   const [area, setArea] = useState('');
-  const [city, setCity] = useState('');
   const [savings, setSavings] = useState<number | null>(null);
 
   const calculateSavings = () => {
@@ -46,39 +45,22 @@ export default function SavingsCalculator() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 mb-6">
-          <div>
-            <Label htmlFor="calc-city">Ваш город</Label>
-            <select
-              id="calc-city"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              className="h-12 w-full rounded-md border border-input bg-white px-3"
-            >
-              <option value="">Выберите город</option>
-              {cities.map(c => (
-                <option key={c} value={c}>{c}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <Label htmlFor="calc-area">Площадь остекления (м²)</Label>
-            <Input
-              id="calc-area"
-              type="number"
-              placeholder="Например, 15"
-              value={area}
-              onChange={(e) => setArea(e.target.value)}
-              className="h-12"
-              min="1"
-            />
-          </div>
+        <div className="mb-6">
+          <Label htmlFor="calc-area">Площадь остекления (м²)</Label>
+          <Input
+            id="calc-area"
+            type="number"
+            placeholder="Например, 15"
+            value={area}
+            onChange={(e) => setArea(e.target.value)}
+            className="h-12"
+            min="1"
+          />
         </div>
 
         <Button
           onClick={calculateSavings}
-          disabled={!area || !city}
+          disabled={!area}
           className="w-full bg-green-600 hover:bg-green-700 h-12 rounded-full font-semibold mb-6"
         >
           Рассчитать экономию
