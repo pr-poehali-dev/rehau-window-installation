@@ -112,19 +112,9 @@ export default function Index() {
             <p className="text-2xl md:text-3xl mb-4 text-accent font-semibold animate-fade-in">
               Герметичные окна премиум-класса с монтажом по ГОСТу
             </p>
-            <p className="text-lg md:text-xl mb-10 text-white/90 animate-fade-in">
+            <p className="text-lg md:text-xl mb-12 text-white/90 animate-fade-in">
               Немецкие окна Rehau с гарантией 10 лет. Более 500 довольных семей во Владивостоке
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-scale-in">
-              <Button 
-                size="lg" 
-                onClick={() => scrollToSection('cta')}
-                className="bg-accent hover:bg-accent/90 text-white text-xl px-12 py-8 h-auto rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 font-bold"
-              >
-                🏠 Вызвать замерщика бесплатно
-              </Button>
-            </div>
 
             <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
               <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
