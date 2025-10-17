@@ -14,9 +14,9 @@ export default function Index() {
   const [currentH1, setCurrentH1] = useState(0);
 
   const h1Variants = [
-    "Окна Rehau для вашего дома мечты: тепло, тишина и уют на 50 лет",
-    "Превратите стройку в дом: немецкие окна Rehau с установкой за 3 дня и гарантией 10 лет",
-    "Строите дом во Владивостоке? Защитите семью от холода и ветра премиальными окнами Rehau"
+    "Сохраняйте тепло и экономьте до 40% на отоплении",
+    "Забудьте о сквозняках и промерзании окон навсегда",
+    "Комфорт вашей семьи начинается с правильных окон"
   ];
 
   useEffect(() => {
@@ -39,7 +39,16 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {isSticky && (
+        <Button
+          size="lg"
+          onClick={() => scrollToSection('cta')}
+          className="fixed bottom-8 right-8 z-50 bg-accent hover:bg-accent/90 text-white text-lg px-8 py-6 h-auto rounded-full shadow-2xl animate-bounce-slow transform hover:scale-110 transition-all duration-300 font-bold"
+        >
+          🏠 Вызвать замерщика
+        </Button>
+      )}
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isSticky ? 'bg-white shadow-lg py-2' : 'bg-white/98 backdrop-blur-sm py-4'
@@ -92,20 +101,23 @@ export default function Index() {
       >
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in" key={currentH1}>
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight animate-fade-in" key={currentH1}>
               {h1Variants[currentH1]}
             </h1>
-            <p className="text-xl md:text-2xl mb-10 text-white/95 animate-fade-in">
-              Немецкое качество, безупречный монтаж по ГОСТу и честная цена. Более 500 загородных домов во Владивостоке доверили нам свой комфорт
+            <p className="text-2xl md:text-3xl mb-4 text-accent font-semibold animate-fade-in">
+              Герметичные окна премиум-класса с монтажом по ГОСТу
+            </p>
+            <p className="text-lg md:text-xl mb-10 text-white/90 animate-fade-in">
+              Немецкие окна Rehau с гарантией 10 лет. Более 500 довольных семей во Владивостоке
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-scale-in">
               <Button 
                 size="lg" 
                 onClick={() => scrollToSection('cta')}
-                className="bg-accent hover:bg-accent/90 text-white text-lg px-10 py-7 h-auto rounded-full shadow-2xl"
+                className="bg-accent hover:bg-accent/90 text-white text-xl px-12 py-8 h-auto rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 font-bold"
               >
-                Вызвать замерщика бесплатно
+                🏠 Вызвать замерщика бесплатно
               </Button>
             </div>
 
