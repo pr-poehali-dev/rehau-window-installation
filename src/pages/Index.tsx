@@ -696,7 +696,10 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-10 mb-12">
             <div>
-              <h3 className="text-2xl font-bold mb-6 text-accent">Окна для Дома</h3>
+              <div className="flex items-center gap-3 mb-4">
+                <img src="https://cdn.poehali.dev/files/9dca37a2-586a-4580-a488-216eafd269c0.jpeg" alt="Оконный Порт" className="h-12 w-12" />
+                <h3 className="text-2xl font-bold text-accent">Оконный Порт</h3>
+              </div>
               <p className="text-white/70 mb-4">
                 Немецкое качество окон для вашего дома
               </p>
