@@ -63,7 +63,7 @@ export default function Index() {
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-3 cursor-pointer group">
-            <img src="https://cdn.poehali.dev/files/b9d273ab-2803-4c62-a0d2-833dde27ddb3.png" alt="Оконный Порт" className="h-16 w-16 opacity-80 blur-[0.5px] transition-all duration-300 group-hover:scale-110 group-hover:opacity-100 group-hover:blur-0" />
+            <img src="https://cdn.poehali.dev/files/9dca37a2-586a-4580-a488-216eafd269c0.jpeg" alt="Оконный Порт" className="h-16 w-16 transition-all duration-300 group-hover:scale-110" />
             <span className="text-2xl font-bold text-primary transition-colors duration-300 group-hover:text-accent">Оконный Порт</span>
           </div>
           
