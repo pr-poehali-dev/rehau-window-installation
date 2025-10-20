@@ -319,17 +319,17 @@ export default function Index() {
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
-              { location: 'Соловей-Ключ', windows: 12, type: 'Коттедж 2 этажа' },
-              { location: 'Штыково', windows: 8, type: 'Таунхаус' },
-              { location: 'Садгород', windows: 15, type: 'Загородный дом' },
-              { location: 'Патрокл', windows: 10, type: 'Коттедж с мансардой' },
-              { location: 'Снеговая Падь', windows: 18, type: 'Особняк' },
-              { location: 'Трудовое', windows: 9, type: 'Дом с верандой' },
+              { location: 'Соловей-Ключ', windows: 12, type: 'Коттедж 2 этажа', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/9996f381-ce32-44da-9830-74cea7dedca9.jpg' },
+              { location: 'Штыково', windows: 8, type: 'Таунхаус', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/989e49e0-51a3-46b4-a43a-df02d9a62135.jpg' },
+              { location: 'Садгород', windows: 15, type: 'Загородный дом', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/600fe4a1-ce17-4cfb-9e67-1e942137effe.jpg' },
+              { location: 'Патрокл', windows: 10, type: 'Коттедж с мансардой', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/14cb74be-a60f-4dfd-8324-0425fef46255.jpg' },
+              { location: 'Снеговая Падь', windows: 18, type: 'Особняк', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/85888390-4e37-4ad6-961a-1543fdd47fc7.jpg' },
+              { location: 'Трудовое', windows: 9, type: 'Дом с верандой', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/64cb6639-3f78-4b4e-85cc-660e3290a727.jpg' },
             ].map((item, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-2xl transition-all duration-300 group border-0 animate-scale-in">
                 <div className="relative overflow-hidden">
                   <img 
-                    src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg"
+                    src={item.image}
                     alt={`Остекление в ${item.location}`}
                     className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
