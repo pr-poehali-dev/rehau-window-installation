@@ -86,9 +86,9 @@ export default function Index() {
           </nav>
           
           <div className="flex items-center gap-4">
-            <a href="tel:+74232000000" className="hidden lg:flex items-center gap-2 text-lg font-semibold text-primary">
+            <a href="tel:+79242348920" className="hidden lg:flex items-center gap-2 text-lg font-semibold text-primary">
               <Icon name="Phone" size={20} />
-              +7 (423) 200-00-00
+              8-924-234-89-20
             </a>
             <Button onClick={() => scrollToSection('cta')} className="bg-accent hover:bg-accent/90 rounded-full px-6 transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
               <Icon name="Ruler" size={18} />
@@ -707,9 +707,9 @@ export default function Index() {
               <h3 className="text-lg font-bold mb-4">Контакты</h3>
               <div className="space-y-3 text-white/80 text-sm">
                 <p>г. Владивосток</p>
-                <p className="font-semibold text-white">+7 (423) 200-00-00</p>
-                <p>info@geometriya-uyuta.ru</p>
-                <p>Режим: Пн-Вс 9:00-20:00</p>
+                <p className="font-semibold text-white">8-924-234-89-20</p>
+                <p>Keranos@mail.ru</p>
+                <p>Режим: Пн-Пят 9:00-19:00</p>
               </div>
             </div>
             
@@ -765,7 +765,7 @@ export default function Index() {
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t-2 border-accent shadow-2xl p-4">
         <div className="flex gap-3">
           <a
-            href="tel:+74232000000"
+            href="tel:+79242348920"
             className="flex-1 bg-primary hover:bg-primary/90 text-white rounded-full py-4 px-6 font-bold text-center flex items-center justify-center gap-2 transition-all active:scale-95"
           >
             <Icon name="Phone" size={20} />
