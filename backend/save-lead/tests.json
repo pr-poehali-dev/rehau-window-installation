@@ -1,0 +1,30 @@
+{
+  "tests": [
+    {
+      "name": "Save lead successfully",
+      "method": "POST",
+      "body": {
+        "name": "Иван Петров",
+        "phone": "+7 (999) 123-45-67"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Missing phone field",
+      "method": "POST",
+      "body": {
+        "name": "Иван"
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "Name and phone are required"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

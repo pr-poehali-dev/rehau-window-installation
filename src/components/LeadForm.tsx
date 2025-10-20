@@ -32,12 +32,31 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
     e.preventDefault();
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    console.log('Форма отправлена:', formData);
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    try {
+      const response = await fetch('https://functions.poehali.dev/0769d889-b7a5-4f5b-bfa3-3638fd27d41c', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', phone: '' });
+        setTimeout(() => setSubmitted(false), 3000);
+      } else {
+        console.error('Ошибка отправки:', result);
+        alert('Ошибка отправки заявки. Попробуйте позже.');
+      }
+    } catch (error) {
+      console.error('Ошибка:', error);
+      alert('Ошибка отправки заявки. Попробуйте позже.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isDark = variant === 'dark';
