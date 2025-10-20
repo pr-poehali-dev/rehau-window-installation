@@ -432,7 +432,7 @@ export default function Index() {
           <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
             {[
               { icon: 'Award', title: '10 лет гарантии', desc: 'Официальная гарантия производителя' },
-              { icon: 'ShieldCheck', title: 'Сертификат качества', desc: 'Европейские стандарты ISO' },
+              { icon: 'ShieldCheck', title: 'Сертификаты государственного образца', desc: 'Полное соответствие стандартам' },
               { icon: 'Handshake', title: 'Партнёр Rehau', desc: 'Сертифицированная компания' }
             ].map((item, index) => (
               <Card key={index} className="hover:shadow-xl transition-all border-2 border-accent/20 bg-gradient-to-br from-white to-accent/5 animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
