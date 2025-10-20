@@ -183,8 +183,8 @@ export default function Index() {
           <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             <div className="order-2 md:order-1 animate-scale-in">
               <img 
-                src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/19914709-a12e-40b8-aca4-0b73738fd355.jpg"
-                alt="Последствия экономии" 
+                src="https://cdn.poehali.dev/files/b30d4b5e-a9a2-4823-ba3d-70df569f7c47.jpeg"
+                alt="Сравнение теплопотерь обычных и энергоэффективных окон" 
                 className="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500"
               />
             </div>
