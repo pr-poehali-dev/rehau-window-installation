@@ -237,9 +237,8 @@ export default function Index() {
 
           <Card className="bg-gradient-to-br from-primary to-primary/90 text-white border-0 shadow-2xl">
             <CardContent className="p-10 md:p-16">
-              <Badge className="mb-6 bg-premium text-premium-foreground hover:bg-premium text-lg px-4 py-1">Premium</Badge>
               <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-                «Окна для Дома» + Rehau = формула идеального дома
+                «Оконный Порт» + Rehau = формула идеального дома
               </h2>
               <p className="text-xl mb-6 text-white/95 leading-relaxed">
                 Немецкий бренд с 70-летним опытом, монтаж по ГОСТу, собственная бригада, честный подход. Более 500 домов и 98% довольных клиентов.
