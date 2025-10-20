@@ -569,7 +569,7 @@ export default function Index() {
                   <Icon key={i} name="Star" size={20} className="fill-accent text-accent" />
                 ))}
               </div>
-              <div className="text-muted-foreground">Google</div>
+              <div className="text-muted-foreground">Яндекс</div>
             </div>
           </div>
         </div>
