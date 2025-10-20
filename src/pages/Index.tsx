@@ -372,10 +372,10 @@ export default function Index() {
                   </thead>
                   <tbody className="bg-white">
                     {[
-                      { type: 'Глухое окно', profile: 'Blitz 60', size: '1200×1400', price: '12 500' },
-                      { type: 'Поворотно-откидное', profile: 'Blitz 60', size: '1200×1400', price: '18 900' },
-                      { type: 'Двустворчатое', profile: 'Grazio 70', size: '1500×1400', price: '24 500' },
-                      { type: 'Панорамное', profile: 'Delight 70', size: '2500×2200', price: '85 000' },
+                      { type: 'Глухое окно', profile: 'Blitz 60', size: '1200×1400', price: '24 800' },
+                      { type: 'Поворотно-откидное', profile: 'Blitz 60', size: '1200×1400', price: '30 800' },
+                      { type: 'Двустворчатое', profile: 'Grazio 70', size: '1500×1400', price: '35 800' },
+                      { type: 'Панорамное', profile: 'Grazio 70', size: '2500×2200', price: '85 000' },
                     ].map((item, index) => (
                       <tr key={index} className="border-b hover:bg-muted/30 transition-colors">
                         <td className="px-6 py-5 font-medium">{item.type}</td>
