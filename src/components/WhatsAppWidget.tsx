@@ -4,11 +4,10 @@ import Icon from '@/components/ui/icon';
 
 export default function TelegramWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const telegramUsername = 'okna_dlya_doma';
-  const message = 'Здравствуйте! Хочу узнать подробнее об окнах Rehau';
+  const telegramUsername = 'Keranos1st';
 
   const handleClick = () => {
-    const url = `https://t.me/${telegramUsername}?text=${encodeURIComponent(message)}`;
+    const url = `https://t.me/${telegramUsername}`;
     window.open(url, '_blank');
   };
 
