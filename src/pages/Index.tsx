@@ -227,8 +227,8 @@ export default function Index() {
             </div>
             <div className="animate-scale-in">
               <img 
-                src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/ef06ef09-9572-472d-844b-4904af45837f.jpg"
-                alt="Энергоэффективные окна Rehau в интерьере" 
+                src="https://cdn.poehali.dev/files/9701cb84-1784-4f21-9fcd-47dabeef1eb5.jpeg"
+                alt="Уютный интерьер с качественными окнами Rehau зимой" 
                 className="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
