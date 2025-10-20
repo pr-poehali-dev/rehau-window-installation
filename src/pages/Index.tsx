@@ -758,7 +758,7 @@ export default function Index() {
           </div>
           
           <div className="border-t border-white/20 pt-8 text-center text-white/60 text-sm">
-            <p>© 2025 «Окна для Дома». Все права защищены.</p>
+            <p>© 2025 «Оконный Порт». Все права защищены.</p>
           </div>
         </div>
       </footer>
