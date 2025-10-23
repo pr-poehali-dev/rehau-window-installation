@@ -260,7 +260,7 @@ export default function Index() {
                 «Оконный Порт» + Rehau = формула идеального дома
               </h2>
               <p className="text-base md:text-xl mb-6 text-white/95 leading-relaxed">
-                Немецкий бренд с 70-летним опытом, монтаж по ГОСТу, собственная бригада, честный подход. Более 500 домов и 98% довольных клиентов.
+                Немецкий бренд с 70-летним опытом, монтаж по ГОСТу, собственные бригады, честный подход. Более 500 домов и 98% довольных клиентов.
               </p>
               <div className="grid grid-cols-3 gap-4 md:gap-8 mb-6 md:mb-8">
                 <div className="text-center">
