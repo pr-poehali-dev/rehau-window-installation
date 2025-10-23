@@ -16,8 +16,8 @@ export default function TelegramWidget() {
       <div className="fixed bottom-8 left-8 z-50">
         {isOpen && (
           <div className="mb-4 bg-white rounded-2xl shadow-2xl p-6 max-w-xs animate-scale-in">
-            <div className="flex items-start gap-3 mb-4">
-              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="group flex items-start gap-3 mb-4">
+              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
                 <Icon name="Send" size={24} className="text-white" />
               </div>
               <div>
@@ -29,9 +29,11 @@ export default function TelegramWidget() {
             </div>
             <Button
               onClick={handleClick}
-              className="w-full bg-blue-500 hover:bg-blue-600 rounded-full font-semibold"
+              className="group w-full bg-blue-500 hover:bg-blue-600 rounded-full font-semibold"
             >
-              <Icon name="Send" size={20} className="mr-2" />
+              <div className="inline-block transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125 mr-2">
+                <Icon name="Send" size={20} />
+              </div>
               Написать в Telegram
             </Button>
             <button
@@ -45,9 +47,11 @@ export default function TelegramWidget() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-16 h-16 bg-blue-500 hover:bg-blue-600 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 animate-bounce-slow"
+          className="group w-16 h-16 bg-blue-500 hover:bg-blue-600 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 animate-bounce-slow"
         >
-          <Icon name="Send" size={32} className="text-white" />
+          <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+            <Icon name="Send" size={32} className="text-white" />
+          </div>
         </button>
       </div>
     </>

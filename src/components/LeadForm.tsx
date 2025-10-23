@@ -107,8 +107,8 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
   return (
     <Card className={`${isDark ? 'bg-white/10 border-white/20 backdrop-blur-md' : ''}`}>
       <CardContent className="p-6">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+        <div className="flex items-center gap-3 mb-6 group">
+          <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
             <Icon name="Phone" size={24} className="text-white" />
           </div>
           <div>

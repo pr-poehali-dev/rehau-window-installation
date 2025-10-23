@@ -50,9 +50,11 @@ export default function Index() {
         <Button
           size="lg"
           onClick={() => scrollToSection('cta')}
-          className="fixed bottom-8 right-8 z-50 bg-accent hover:bg-accent/90 text-white text-lg px-8 py-6 h-auto rounded-full shadow-2xl animate-bounce-slow transform hover:scale-105 transition-all duration-300 font-bold flex items-center gap-2"
+          className="group fixed bottom-8 right-8 z-50 bg-accent hover:bg-accent/90 text-white text-lg px-8 py-6 h-auto rounded-full shadow-2xl animate-bounce-slow transform hover:scale-105 transition-all duration-300 font-bold flex items-center gap-2"
         >
-          <Icon name="Ruler" size={20} />
+          <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+            <Icon name="Ruler" size={20} />
+          </div>
           Вызвать замерщика
         </Button>
       )}
@@ -86,12 +88,16 @@ export default function Index() {
           </nav>
           
           <div className="flex items-center gap-4">
-            <a href="tel:+79242348920" className={`hidden lg:flex items-center gap-2 text-lg font-semibold transition-colors ${isSticky ? 'text-primary' : 'text-white'}`}>
-              <Icon name="Phone" size={20} />
+            <a href="tel:+79242348920" className={`hidden lg:flex items-center gap-2 text-lg font-semibold transition-colors group ${isSticky ? 'text-primary' : 'text-white'}`}>
+              <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                <Icon name="Phone" size={20} />
+              </div>
               8-924-234-89-20
             </a>
-            <Button onClick={() => scrollToSection('cta')} className="bg-accent hover:bg-accent/90 rounded-full px-6 transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
-              <Icon name="Ruler" size={18} />
+            <Button onClick={() => scrollToSection('cta')} className="bg-accent hover:bg-accent/90 rounded-full px-6 transform hover:scale-105 transition-all duration-300 flex items-center gap-2 group">
+              <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                <Icon name="Ruler" size={18} />
+              </div>
               Заказать замер
             </Button>
           </div>
@@ -122,16 +128,22 @@ export default function Index() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
-                <Icon name="CalendarCheck" size={32} className="text-accent" />
+              <div className="group flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
+                <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                  <Icon name="CalendarCheck" size={32} className="text-accent" />
+                </div>
                 <span className="text-left text-sm font-medium">Выезд в день обращения</span>
               </div>
-              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
-                <Icon name="Clock" size={32} className="text-accent" />
+              <div className="group flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
+                <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                  <Icon name="Clock" size={32} className="text-accent" />
+                </div>
                 <span className="text-left text-sm font-medium">Расчёт сметы за 15 минут</span>
               </div>
-              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
-                <Icon name="Shield" size={32} className="text-accent" />
+              <div className="group flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl p-5 hover:bg-white/20 transition-all">
+                <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                  <Icon name="Shield" size={32} className="text-accent" />
+                </div>
                 <span className="text-left text-sm font-medium">Гарантия 10 лет</span>
               </div>
             </div>
@@ -287,7 +299,7 @@ export default function Index() {
               { icon: 'Factory', title: 'Изготовление на заводе Rehau', desc: 'Бесплатная доставка на объект' },
               { icon: 'Wrench', title: 'Монтаж под ключ', desc: 'Гарантия, послепродажная поддержка' },
             ].map((step, index) => (
-              <div key={index} className="flex gap-8 mb-10 animate-fade-in" style={{ animationDelay: `${index * 0.15}s` }}>
+              <div key={index} className="group flex gap-8 mb-10 animate-fade-in" style={{ animationDelay: `${index * 0.15}s` }}>
                 <div className="flex-shrink-0">
                   <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-xl">
                     {index + 1}
@@ -295,7 +307,9 @@ export default function Index() {
                 </div>
                 <div className="flex-1 bg-white/15 backdrop-blur-md rounded-2xl p-8 hover:bg-white/20 transition-all">
                   <div className="flex items-center gap-4 mb-3">
-                    <Icon name={step.icon as any} size={28} className="text-accent" />
+                    <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                      <Icon name={step.icon as any} size={28} className="text-accent" />
+                    </div>
                     <h3 className="text-2xl font-bold">{step.title}</h3>
                   </div>
                   <p className="text-white/85 text-lg">{step.desc}</p>

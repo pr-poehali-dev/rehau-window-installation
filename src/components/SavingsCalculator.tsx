@@ -31,8 +31,8 @@ export default function SavingsCalculator() {
   return (
     <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200">
       <CardContent className="p-8">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center">
+        <div className="flex items-center gap-3 mb-6 group">
+          <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
             <Icon name="Calculator" size={28} className="text-white" />
           </div>
           <div>

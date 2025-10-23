@@ -73,6 +73,7 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			rotate: {
+				'20': '20deg',
 				'30': '30deg',
 			},
 			keyframes: {

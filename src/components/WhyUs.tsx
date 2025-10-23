@@ -90,7 +90,7 @@ export default function WhyUs() {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-8">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mb-6 shadow-lg transition-all duration-300 group-hover:rotate-30 group-hover:brightness-125`}>
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mb-6 shadow-lg transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125`}>
                   <Icon name={benefit.icon as any} size={32} className="text-white transition-transform duration-300" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-foreground">

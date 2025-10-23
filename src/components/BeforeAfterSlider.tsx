@@ -111,25 +111,31 @@ export default function BeforeAfterSlider() {
 
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110"
+            className="group absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110"
             aria-label="Предыдущее фото"
           >
-            <Icon name="ChevronLeft" size={24} className="text-primary" />
+            <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+              <Icon name="ChevronLeft" size={24} className="text-primary" />
+            </div>
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110"
+            className="group absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110"
             aria-label="Следующее фото"
           >
-            <Icon name="ChevronRight" size={24} className="text-primary" />
+            <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+              <Icon name="ChevronRight" size={24} className="text-primary" />
+            </div>
           </button>
         </div>
 
         <div className="p-6 bg-white">
           <h3 className="text-2xl font-bold mb-2">{current.title}</h3>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Icon name="MapPin" size={16} />
+          <div className="group flex items-center gap-2 text-muted-foreground">
+            <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+              <Icon name="MapPin" size={16} />
+            </div>
             <span>{current.location}</span>
           </div>
 

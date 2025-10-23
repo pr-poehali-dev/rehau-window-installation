@@ -42,8 +42,10 @@ export default function CountdownTimer() {
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
         
         <div className="relative z-10">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Icon name="Zap" size={32} className="text-yellow-300" />
+          <div className="flex items-center justify-center gap-2 mb-4 group">
+            <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+              <Icon name="Zap" size={32} className="text-yellow-300" />
+            </div>
             <h3 className="text-2xl md:text-4xl font-bold text-white text-center">
               Специальное предложение!
             </h3>
