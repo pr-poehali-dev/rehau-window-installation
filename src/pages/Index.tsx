@@ -51,7 +51,7 @@ export default function Index() {
         <Button
           size="lg"
           onClick={() => scrollToSection('cta')}
-          className="group fixed bottom-8 right-8 z-50 bg-accent hover:bg-accent/90 text-white text-lg px-8 py-6 h-auto rounded-full shadow-2xl animate-bounce-slow transform hover:scale-105 transition-all duration-300 font-bold flex items-center gap-2"
+          className="group fixed bottom-8 right-8 z-50 bg-accent hover:bg-accent/90 text-white text-lg px-8 py-6 h-auto rounded-full shadow-2xl animate-bounce-slow transform hover:scale-105 transition-all duration-300 font-bold md:flex items-center gap-2 hidden"
         >
           <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
             <Icon name="Ruler" size={20} />
@@ -95,13 +95,19 @@ export default function Index() {
               </div>
               8-924-234-89-20
             </a>
-            <Button onClick={() => scrollToSection('cta')} className="bg-accent hover:bg-accent/90 rounded-full px-4 py-2 md:px-6 text-sm md:text-base transform hover:scale-105 transition-all duration-300 flex items-center gap-2 group">
+            <a href="https://t.me/Keranos1st" target="_blank" rel="noopener noreferrer" className="md:hidden">
+              <Button className="bg-blue-500 hover:bg-blue-600 rounded-full px-4 py-2 text-sm transform hover:scale-105 transition-all duration-300 flex items-center gap-2 group">
+                <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                  <Icon name="Send" size={16} />
+                </div>
+                Telegram
+              </Button>
+            </a>
+            <Button onClick={() => scrollToSection('cta')} className="hidden md:flex bg-accent hover:bg-accent/90 rounded-full px-4 py-2 md:px-6 text-sm md:text-base transform hover:scale-105 transition-all duration-300 items-center gap-2 group">
               <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
-                <Icon name="Ruler" size={16} className="md:hidden" />
-                <Icon name="Ruler" size={18} className="hidden md:block" />
+                <Icon name="Ruler" size={18} />
               </div>
-              <span className="hidden sm:inline">Заказать замер</span>
-              <span className="sm:hidden">Замер</span>
+              <span>Заказать замер</span>
             </Button>
           </div>
         </div>

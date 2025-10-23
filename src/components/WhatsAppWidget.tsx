@@ -13,7 +13,7 @@ export default function TelegramWidget() {
 
   return (
     <>
-      <div className="fixed bottom-8 left-8 z-50">
+      <div className="fixed bottom-8 left-8 md:flex z-50 hidden">
         {isOpen && (
           <div className="mb-4 bg-white rounded-2xl shadow-2xl p-6 max-w-xs animate-scale-in">
             <div className="group flex items-start gap-3 mb-4">
