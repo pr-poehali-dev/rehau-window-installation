@@ -343,7 +343,7 @@ export default function Index() {
               { location: 'Соловей-Ключ', windows: 12, type: 'Коттедж 2 этажа', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/9996f381-ce32-44da-9830-74cea7dedca9.jpg' },
               { location: 'Район Черной речки', windows: 8, type: 'Таунхаус', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/989e49e0-51a3-46b4-a43a-df02d9a62135.jpg' },
               { location: 'Садгород', windows: 15, type: 'Загородный дом', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/600fe4a1-ce17-4cfb-9e67-1e942137effe.jpg' },
-              { location: 'Соловей ключ', windows: 10, type: 'Коттедж с мансардой', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/e5c9ead3-ae5e-47e2-8af5-c12870482a50.jpg' },
+              { location: 'Соловей ключ', windows: 10, type: 'Коттедж с мансардой', image: 'https://cdn.poehali.dev/files/44184ed6-d9fc-46d6-bbaf-3da645c3c881.jpeg' },
               { location: 'Щитовая', windows: 18, type: 'Особняк', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/85888390-4e37-4ad6-961a-1543fdd47fc7.jpg' },
               { location: 'Трудовое', windows: 9, type: 'Дом с верандой', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/d6c106b9-318f-4e61-846a-bceafd05b1f1.jpg' },
             ];
