@@ -208,7 +208,6 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             <div className="animate-fade-in">
-              <Badge className="mb-4 bg-green-100 text-green-700 hover:bg-green-100">Решение</Badge>
               <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
                 Хорошая новость: правильные окна решают все эти проблемы навсегда
               </h2>
