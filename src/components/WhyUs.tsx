@@ -84,14 +84,14 @@ export default function WhyUs() {
             <Card
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
-              className={`border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
+              className={`group border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
                 visibleCards[index] ? 'animate-slide-up' : 'opacity-0'
               }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-8">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mb-6 shadow-lg`}>
-                  <Icon name={benefit.icon as any} size={32} className="text-white" />
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mb-6 shadow-lg transition-all duration-300 group-hover:rotate-30 group-hover:brightness-125`}>
+                  <Icon name={benefit.icon as any} size={32} className="text-white transition-transform duration-300" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-foreground">
                   {benefit.title}

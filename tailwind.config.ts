@@ -72,6 +72,9 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			rotate: {
+				'30': '30deg',
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {
