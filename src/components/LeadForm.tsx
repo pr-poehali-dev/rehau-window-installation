@@ -29,6 +29,7 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,9 +48,13 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
       
       if (response.ok) {
         setSubmitted(true);
+        setShowSuccessMessage(true);
         setFormData({ name: '', phone: '' });
         setAgreedToTerms(false);
-        setTimeout(() => setSubmitted(false), 3000);
+        setTimeout(() => {
+          setSubmitted(false);
+          setShowSuccessMessage(false);
+        }, 5000);
       } else {
         console.error('Ошибка отправки:', result);
         alert('Ошибка отправки заявки. Попробуйте позже.');
@@ -65,6 +70,22 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
   const isDark = variant === 'dark';
 
   if (compact) {
+    if (showSuccessMessage) {
+      return (
+        <div className={`p-6 rounded-2xl text-center ${isDark ? 'bg-white/10 text-white' : 'bg-green-50 text-green-900'}`}>
+          <div className="flex justify-center mb-4">
+            <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
+              <Icon name="Check" size={32} className="text-white" />
+            </div>
+          </div>
+          <h3 className="text-xl font-bold mb-2">Спасибо за обращение!</h3>
+          <p className="text-base">
+            Спасибо, что обратились в компанию Оконный Порт, мы свяжемся с Вами в течение ближайшего времени.
+          </p>
+        </div>
+      );
+    }
+    
     return (
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
         <div className="flex flex-col sm:flex-row gap-3">
@@ -131,6 +152,24 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
     );
   }
 
+  if (showSuccessMessage) {
+    return (
+      <Card className={`${isDark ? 'bg-white/10 border-white/20 backdrop-blur-md' : 'bg-green-50 border-green-200'}`}>
+        <CardContent className="p-8 text-center">
+          <div className="flex justify-center mb-4">
+            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center">
+              <Icon name="Check" size={40} className="text-white" />
+            </div>
+          </div>
+          <h3 className={`text-2xl font-bold mb-3 ${isDark ? 'text-white' : 'text-green-900'}`}>Спасибо за обращение!</h3>
+          <p className={`text-lg ${isDark ? 'text-white/90' : 'text-green-800'}`}>
+            Спасибо, что обратились в компанию Оконный Порт, мы свяжемся с Вами в течение ближайшего времени.
+          </p>
+        </CardContent>
+      </Card>
+    );
+  }
+  
   return (
     <Card className={`${isDark ? 'bg-white/10 border-white/20 backdrop-blur-md' : ''}`}>
       <CardContent className="p-6">
