@@ -13,6 +13,7 @@ import CountdownTimer from '@/components/CountdownTimer';
 import SavingsCalculator from '@/components/SavingsCalculator';
 import WhyUs from '@/components/WhyUs';
 import TelegramWidget from '@/components/WhatsAppWidget';
+import Footer from '@/components/Footer';
 
 export default function Index() {
   const [isSticky, setIsSticky] = useState(false);
@@ -702,77 +703,7 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="bg-foreground text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-10 mb-12">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <img src="https://cdn.poehali.dev/files/9dca37a2-586a-4580-a488-216eafd269c0.jpeg" alt="Оконный Порт" className="h-12 w-12" />
-                <h3 className="text-2xl font-bold text-accent">Оконный Порт</h3>
-              </div>
-              <p className="text-white/70 mb-4">
-                Немецкое качество окон для вашего дома
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4">Контакты</h3>
-              <div className="space-y-3 text-white/80 text-sm">
-                <p>г. Владивосток</p>
-                <p className="font-semibold text-white">8-924-234-89-20</p>
-                <p>Keranos@mail.ru</p>
-                <p>Режим: Пн-Пят 9:00-19:00</p>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4">Навигация</h3>
-              <div className="space-y-2">
-                <button onClick={() => scrollToSection('advantages')} className="block text-white/80 hover:text-white transition-colors text-sm">
-                  О компании
-                </button>
-                <button onClick={() => scrollToSection('portfolio')} className="block text-white/80 hover:text-white transition-colors text-sm">
-                  Наши работы
-                </button>
-                <button onClick={() => scrollToSection('pricing')} className="block text-white/80 hover:text-white transition-colors text-sm">
-                  Цены
-                </button>
-                <button onClick={() => scrollToSection('reviews')} className="block text-white/80 hover:text-white transition-colors text-sm">
-                  Отзывы
-                </button>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4">Социальные сети</h3>
-              <div className="flex gap-3 mb-6">
-                <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
-                  <Icon name="MessageCircle" size={22} />
-                </a>
-                <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
-                  <Icon name="Send" size={22} />
-                </a>
-                <a href="#" className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
-                  <Icon name="Phone" size={22} />
-                </a>
-              </div>
-              <div className="mt-4">
-                <Label htmlFor="subscribe" className="text-sm mb-2 block">Подписка на новости</Label>
-                <div className="flex gap-2">
-                  <Input id="subscribe" type="email" placeholder="Email" className="h-10 bg-white/10 border-white/20 text-white placeholder:text-white/60 text-sm" />
-                  <Button size="sm" className="bg-accent hover:bg-accent/90 h-10 px-4">
-                    <Icon name="Send" size={16} />
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/20 pt-8 text-center text-white/60 text-sm">
-            <p>© 2025 «Оконный Порт». Все права защищены.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t-2 border-accent shadow-2xl p-4">
         <div className="flex gap-3">
