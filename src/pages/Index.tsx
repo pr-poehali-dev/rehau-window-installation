@@ -96,7 +96,7 @@ export default function Index() {
               8-924-234-89-20
             </a>
             <a href="https://t.me/Keranos1st" target="_blank" rel="noopener noreferrer" className="md:hidden">
-              <Button className="bg-blue-500 hover:bg-blue-600 rounded-full px-4 py-2 text-sm transform hover:scale-105 transition-all duration-300 flex items-center gap-2 group">
+              <Button className="bg-blue-500 hover:bg-blue-600 rounded-full px-4 py-2 text-sm transform hover:scale-105 transition-all duration-300 flex items-center gap-2 group animate-shake-bell">
                 <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
                   <Icon name="Send" size={16} />
                 </div>
