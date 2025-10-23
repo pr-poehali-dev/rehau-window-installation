@@ -47,7 +47,7 @@ export default function TelegramWidget() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="group w-16 h-16 bg-blue-500 hover:bg-blue-600 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 animate-bounce-slow"
+          className="group w-16 h-16 bg-blue-500 hover:bg-blue-600 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 animate-shake-bell"
         >
           <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
             <Icon name="Send" size={32} className="text-white" />
