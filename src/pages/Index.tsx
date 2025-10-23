@@ -702,54 +702,24 @@ export default function Index() {
               Специалист приедет, проведёт замеры, рассчитает стоимость и ответит на вопросы. Никаких обязательств.
             </p>
             
-            <Card className="bg-white text-foreground border-0 shadow-2xl">
-              <CardContent className="p-10">
-                <form className="space-y-5">
-                  <div className="text-left">
-                    <Label htmlFor="name" className="text-base font-semibold">Имя</Label>
-                    <Input id="name" placeholder="Как к вам обращаться?" className="mt-2 h-12 text-base" />
-                  </div>
-                  <div className="text-left">
-                    <Label htmlFor="phone" className="text-base font-semibold">Телефон</Label>
-                    <Input id="phone" type="tel" placeholder="+7 (___) ___-__-__" className="mt-2 h-12 text-base" />
-                  </div>
-                  <div className="text-left">
-                    <Label htmlFor="address" className="text-base font-semibold">Адрес объекта</Label>
-                    <Input id="address" placeholder="Где находится ваш дом?" className="mt-2 h-12 text-base" />
-                  </div>
-                  <div className="flex items-center space-x-3 text-left">
-                    <Checkbox id="bonus" />
-                    <label htmlFor="bonus" className="text-base font-medium cursor-pointer">
-                      Получить дизайн-проект в подарок
-                    </label>
-                  </div>
-                  <div className="flex items-start space-x-3 text-left">
-                    <Checkbox id="privacy" />
-                    <label htmlFor="privacy" className="text-sm text-muted-foreground cursor-pointer">
-                      Я принимаю условия политики конфиденциальности
-                    </label>
-                  </div>
-                  <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-white text-lg py-7 h-auto rounded-full shadow-xl">
-                    Заказать бесплатный замер
-                  </Button>
-                </form>
-                
-                <div className="mt-8 space-y-3 text-sm text-muted-foreground">
-                  <div className="flex items-center justify-center gap-2">
-                    <Icon name="Clock" size={18} />
-                    <span>Ответим в течение 5 минут</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2">
-                    <Icon name="Car" size={18} />
-                    <span>Выезд в день обращения</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2">
-                    <Icon name="Wallet" size={18} />
-                    <span>Расчёт стоимости бесплатно</span>
-                  </div>
+            <div className="max-w-lg mx-auto">
+              <LeadForm variant="light" />
+              
+              <div className="mt-8 space-y-3 text-sm text-white/90">
+                <div className="flex items-center justify-center gap-2">
+                  <Icon name="Clock" size={18} />
+                  <span>Ответим в течение 5 минут</span>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="flex items-center justify-center gap-2">
+                  <Icon name="Car" size={18} />
+                  <span>Выезд в день обращения</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <Icon name="Wallet" size={18} />
+                  <span>Расчёт стоимости бесплатно</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
