@@ -123,16 +123,16 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             Это автоматическое уведомление с сайта Оконный Порт
             '''
             
-            msg.attach(MIMEText(text_body, 'plain'))
-            msg.attach(MIMEText(html_body, 'html'))
+            msg.attach(MIMEText(text_body, 'plain', 'utf-8'))
+            msg.attach(MIMEText(html_body, 'html', 'utf-8'))
             
-            server = smtplib.SMTP(smtp_host, smtp_port)
+            server = smtplib.SMTP(smtp_host, smtp_port, timeout=10)
             server.starttls()
             server.login(smtp_user, smtp_password)
             server.send_message(msg)
             server.quit()
         except Exception as e:
-            print(f'Email send error: {e}')
+            print(f'Email send error: {str(e)}')
     
     return {
         'statusCode': 200,
