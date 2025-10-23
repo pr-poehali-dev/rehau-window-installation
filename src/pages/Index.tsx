@@ -18,6 +18,7 @@ export default function Index() {
   const [isSticky, setIsSticky] = useState(false);
   const [currentH1, setCurrentH1] = useState(0);
   const [currentReview, setCurrentReview] = useState(0);
+  const [currentPortfolio, setCurrentPortfolio] = useState(0);
 
   const h1Variants = [
     "Сохраняйте тепло и экономьте до 40% на отоплении",
@@ -329,34 +330,105 @@ export default function Index() {
             Остекление новостроек и коттеджей под ключ — комфорт с первого дня
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {[
+          {(() => {
+            const portfolioItems = [
               { location: 'Соловей-Ключ', windows: 12, type: 'Коттедж 2 этажа', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/9996f381-ce32-44da-9830-74cea7dedca9.jpg' },
               { location: 'Штыково', windows: 8, type: 'Таунхаус', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/989e49e0-51a3-46b4-a43a-df02d9a62135.jpg' },
               { location: 'Садгород', windows: 15, type: 'Загородный дом', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/600fe4a1-ce17-4cfb-9e67-1e942137effe.jpg' },
               { location: 'Патрокл', windows: 10, type: 'Коттедж с мансардой', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/14cb74be-a60f-4dfd-8324-0425fef46255.jpg' },
               { location: 'Снеговая Падь', windows: 18, type: 'Особняк', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/85888390-4e37-4ad6-961a-1543fdd47fc7.jpg' },
               { location: 'Трудовое', windows: 9, type: 'Дом с верандой', image: 'https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/64cb6639-3f78-4b4e-85cc-660e3290a727.jpg' },
-            ].map((item, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-2xl transition-all duration-300 group border-0 animate-scale-in">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={item.image}
-                    alt={`Остекление в ${item.location}`}
-                    className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-accent text-white">Rehau</Badge>
+            ];
+
+            const nextPortfolio = () => {
+              setCurrentPortfolio((prev) => (prev + 1) % portfolioItems.length);
+            };
+
+            const prevPortfolio = () => {
+              setCurrentPortfolio((prev) => (prev - 1 + portfolioItems.length) % portfolioItems.length);
+            };
+
+            return (
+              <>
+                {/* Desktop grid */}
+                <div className="hidden md:grid md:grid-cols-3 gap-8 mb-12">
+                  {portfolioItems.map((item, index) => (
+                    <Card key={index} className="overflow-hidden hover:shadow-2xl transition-all duration-300 group border-0 animate-scale-in">
+                      <div className="relative overflow-hidden">
+                        <img 
+                          src={item.image}
+                          alt={`Остекление в ${item.location}`}
+                          className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                        <div className="absolute top-4 right-4">
+                          <Badge className="bg-accent text-white">Rehau</Badge>
+                        </div>
+                      </div>
+                      <CardContent className="p-6">
+                        <p className="font-bold text-lg mb-1">{item.type}</p>
+                        <p className="text-muted-foreground mb-1">{item.location}</p>
+                        <p className="text-sm text-primary font-medium">Установлено {item.windows} окон Rehau</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* Mobile carousel */}
+                <div className="md:hidden relative mb-12">
+                  <Card className="overflow-hidden border-0 shadow-xl">
+                    <div className="relative overflow-hidden">
+                      <img 
+                        src={portfolioItems[currentPortfolio].image}
+                        alt={`Остекление в ${portfolioItems[currentPortfolio].location}`}
+                        className="w-full h-80 object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-4 right-4">
+                        <Badge className="bg-accent text-white">Rehau</Badge>
+                      </div>
+                    </div>
+                    <CardContent className="p-6">
+                      <p className="font-bold text-lg mb-1">{portfolioItems[currentPortfolio].type}</p>
+                      <p className="text-muted-foreground mb-1">{portfolioItems[currentPortfolio].location}</p>
+                      <p className="text-sm text-primary font-medium">Установлено {portfolioItems[currentPortfolio].windows} окон Rehau</p>
+                    </CardContent>
+                  </Card>
+
+                  <div className="flex justify-center items-center gap-4 mt-6">
+                    <Button 
+                      onClick={prevPortfolio}
+                      variant="outline" 
+                      size="icon"
+                      className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-white transition-all"
+                    >
+                      <Icon name="ChevronLeft" size={24} />
+                    </Button>
+                    <div className="flex gap-2">
+                      {portfolioItems.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentPortfolio(index)}
+                          className={`h-2 rounded-full transition-all ${
+                            index === currentPortfolio ? 'w-8 bg-primary' : 'w-2 bg-muted-foreground/30'
+                          }`}
+                          aria-label={`Перейти к объекту ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                    <Button 
+                      onClick={nextPortfolio}
+                      variant="outline" 
+                      size="icon"
+                      className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-white transition-all"
+                    >
+                      <Icon name="ChevronRight" size={24} />
+                    </Button>
                   </div>
                 </div>
-                <CardContent className="p-6">
-                  <p className="font-bold text-lg mb-1">{item.type}</p>
-                  <p className="text-muted-foreground mb-1">{item.location}</p>
-                  <p className="text-sm text-primary font-medium">Установлено {item.windows} окон Rehau</p>
-                </CardContent>
-              </Card>
-            ))}
+              </>
+            );
+          })()}
           </div>
         </div>
       </section>
