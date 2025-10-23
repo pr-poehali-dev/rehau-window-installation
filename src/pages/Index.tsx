@@ -717,11 +717,48 @@ export default function Index() {
             
             <div>
               <h3 className="text-lg font-bold mb-4">Контакты</h3>
-              <div className="space-y-3 text-white/80 text-sm">
-                <p>г. Владивосток</p>
-                <p className="font-semibold text-white">8-924-234-89-20</p>
-                <p>Keranos@mail.ru</p>
-                <p>Режим: Пн-Пят 9:00-19:00</p>
+              <div className="space-y-3">
+                <a 
+                  href="tel:+79242348920" 
+                  className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+                >
+                  <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                    <Icon name="Phone" size={18} />
+                  </div>
+                  <span className="text-sm">8-924-234-89-20</span>
+                </a>
+                <a 
+                  href="https://t.me/Keranos1st" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+                >
+                  <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                    <Icon name="Send" size={18} />
+                  </div>
+                  <span className="text-sm">Telegram</span>
+                </a>
+                <a 
+                  href="mailto:Keranos@mail.ru" 
+                  className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+                >
+                  <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                    <Icon name="Mail" size={18} />
+                  </div>
+                  <span className="text-sm">Keranos@mail.ru</span>
+                </a>
+                <div className="group flex items-start gap-2 text-white/80">
+                  <div className="mt-0.5 transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                    <Icon name="MapPin" size={18} />
+                  </div>
+                  <span className="text-sm">г. Владивосток, Приморский край</span>
+                </div>
+                <div className="group flex items-center gap-2 text-white/80">
+                  <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
+                    <Icon name="Clock" size={18} />
+                  </div>
+                  <span className="text-sm">Пн-Пт 9:00-19:00</span>
+                </div>
               </div>
             </div>
             
