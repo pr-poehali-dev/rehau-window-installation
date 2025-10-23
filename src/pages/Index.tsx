@@ -782,13 +782,13 @@ export default function Index() {
                   <span className="text-sm">Telegram</span>
                 </a>
                 <a 
-                  href="mailto:Keranos@mail.ru" 
+                  href="mailto:windowport@mail.ru" 
                   className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors"
                 >
                   <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
                     <Icon name="Mail" size={18} />
                   </div>
-                  <span className="text-sm">Keranos@mail.ru</span>
+                  <span className="text-sm">windowport@mail.ru</span>
                 </a>
                 <div className="group flex items-start gap-2 text-white/80">
                   <div className="mt-0.5 transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
