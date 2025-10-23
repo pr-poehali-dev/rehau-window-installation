@@ -155,7 +155,6 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             <div className="animate-fade-in">
-              <Badge className="mb-4 bg-red-100 text-red-700 hover:bg-red-100">Проблема</Badge>
               <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
                 Вы строите дом мечты... Но одна ошибка с окнами может всё испортить
               </h2>
