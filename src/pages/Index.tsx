@@ -58,35 +58,35 @@ export default function Index() {
       )}
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isSticky ? 'bg-white shadow-lg py-2' : 'bg-white/98 backdrop-blur-sm py-4'
+          isSticky ? 'bg-white shadow-lg py-2' : 'bg-transparent py-4'
         }`}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-3 cursor-pointer group">
             <img src="https://cdn.poehali.dev/files/9dca37a2-586a-4580-a488-216eafd269c0.jpeg" alt="Оконный Порт" className="h-16 w-16 transition-all duration-300 group-hover:scale-110" />
-            <span className="text-2xl font-bold text-primary transition-colors duration-300 group-hover:text-accent">Оконный Порт</span>
+            <span className={`text-2xl font-bold transition-colors duration-300 group-hover:text-accent ${isSticky ? 'text-primary' : 'text-white'}`}>Оконный Порт</span>
           </div>
           
           <nav className="hidden md:flex gap-6">
-            <button onClick={() => scrollToSection('advantages')} className="text-sm font-medium hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('advantages')} className={`text-sm font-medium hover:text-accent transition-colors ${isSticky ? 'text-foreground' : 'text-white'}`}>
               Преимущества
             </button>
-            <button onClick={() => scrollToSection('process')} className="text-sm font-medium hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('process')} className={`text-sm font-medium hover:text-accent transition-colors ${isSticky ? 'text-foreground' : 'text-white'}`}>
               Процесс
             </button>
-            <button onClick={() => scrollToSection('portfolio')} className="text-sm font-medium hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('portfolio')} className={`text-sm font-medium hover:text-accent transition-colors ${isSticky ? 'text-foreground' : 'text-white'}`}>
               Примеры
             </button>
-            <button onClick={() => scrollToSection('pricing')} className="text-sm font-medium hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('pricing')} className={`text-sm font-medium hover:text-accent transition-colors ${isSticky ? 'text-foreground' : 'text-white'}`}>
               Цены
             </button>
-            <button onClick={() => scrollToSection('reviews')} className="text-sm font-medium hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('reviews')} className={`text-sm font-medium hover:text-accent transition-colors ${isSticky ? 'text-foreground' : 'text-white'}`}>
               Отзывы
             </button>
           </nav>
           
           <div className="flex items-center gap-4">
-            <a href="tel:+79242348920" className="hidden lg:flex items-center gap-2 text-lg font-semibold text-primary">
+            <a href="tel:+79242348920" className={`hidden lg:flex items-center gap-2 text-lg font-semibold transition-colors ${isSticky ? 'text-primary' : 'text-white'}`}>
               <Icon name="Phone" size={20} />
               8-924-234-89-20
             </a>
