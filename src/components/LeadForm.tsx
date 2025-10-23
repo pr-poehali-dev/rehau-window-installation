@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
 import Icon from '@/components/ui/icon';
 
 interface LeadFormProps {
@@ -25,6 +26,7 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
     name: '',
     phone: ''
   });
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -46,6 +48,7 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
       if (response.ok) {
         setSubmitted(true);
         setFormData({ name: '', phone: '' });
+        setAgreedToTerms(false);
         setTimeout(() => setSubmitted(false), 3000);
       } else {
         console.error('Ошибка отправки:', result);
@@ -63,28 +66,52 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
 
   if (compact) {
     return (
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full">
-        <Input
-          placeholder="Ваше имя"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className={`h-14 text-base input-focus ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
-          required
-        />
-        <Input
-          type="tel"
-          placeholder="+7 (___) ___-__-__"
-          value={formData.phone}
-          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className={`h-14 text-base input-focus ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
-          required
-        />
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Input
+            placeholder="Ваше имя"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className={`h-14 text-base input-focus ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
+            required
+          />
+          <Input
+            type="tel"
+            placeholder="+7 (___) ___-__-__"
+            value={formData.phone}
+            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            className={`h-14 text-base input-focus ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/60' : ''}`}
+            required
+          />
+        </div>
+
+        <div className="flex items-start gap-2">
+          <Checkbox 
+            id="terms-compact"
+            checked={agreedToTerms}
+            onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)}
+            className={isDark ? 'border-white/40' : ''}
+          />
+          <label 
+            htmlFor="terms-compact" 
+            className={`text-xs cursor-pointer ${isDark ? 'text-white/80' : 'text-muted-foreground'}`}
+          >
+            Я согласен с{' '}
+            <a href="/privacy-policy.html" target="_blank" className="underline hover:text-accent">
+              политикой конфиденциальности
+            </a>
+            {' '}и{' '}
+            <a href="/terms-of-service.html" target="_blank" className="underline hover:text-accent">
+              договором оферты
+            </a>
+          </label>
+        </div>
 
         <Button
           type="submit"
           size="lg"
-          className="bg-accent hover:bg-accent/90 h-14 px-8 rounded-full font-semibold whitespace-nowrap transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-          disabled={submitted || isSubmitting}
+          className="bg-accent hover:bg-accent/90 h-14 px-8 rounded-full font-semibold whitespace-nowrap transform hover:scale-105 transition-all duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={!agreedToTerms || submitted || isSubmitting}
         >
           {isSubmitting ? (
             <>
@@ -147,13 +174,33 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
             />
           </div>
 
-
+          <div className="flex items-start gap-2">
+            <Checkbox 
+              id="terms"
+              checked={agreedToTerms}
+              onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)}
+              className={isDark ? 'border-white/40' : ''}
+            />
+            <label 
+              htmlFor="terms" 
+              className={`text-xs cursor-pointer ${isDark ? 'text-white/80' : 'text-muted-foreground'}`}
+            >
+              Я согласен с{' '}
+              <a href="/privacy-policy.html" target="_blank" className="underline hover:text-accent">
+                политикой конфиденциальности
+              </a>
+              {' '}и{' '}
+              <a href="/terms-of-service.html" target="_blank" className="underline hover:text-accent">
+                договором оферты
+              </a>
+            </label>
+          </div>
 
           <Button
             type="submit"
             size="lg"
-            className="w-full bg-accent hover:bg-accent/90 h-12 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
-            disabled={submitted || isSubmitting}
+            className="w-full bg-accent hover:bg-accent/90 h-12 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={!agreedToTerms || submitted || isSubmitting}
           >
             {isSubmitting ? (
               <>
@@ -170,9 +217,7 @@ export default function LeadForm({ variant = 'light', compact = false }: LeadFor
             )}
           </Button>
 
-          <p className={`text-xs text-center ${isDark ? 'text-white/60' : 'text-muted-foreground'}`}>
-            Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-          </p>
+
         </form>
       </CardContent>
     </Card>
