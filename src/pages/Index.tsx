@@ -466,7 +466,7 @@ export default function Index() {
                         <td className="px-3 md:px-6 py-3 md:py-5 font-medium text-xs md:text-base">{item.type}</td>
                         <td className="px-3 md:px-6 py-3 md:py-5 text-muted-foreground text-xs md:text-base">{item.profile}</td>
                         <td className="px-3 md:px-6 py-3 md:py-5 text-muted-foreground text-xs md:text-base hidden sm:table-cell">{item.size} мм</td>
-                        <td className="px-3 md:px-6 py-3 md:py-5 text-right font-bold text-primary text-sm md:text-lg whitespace-nowrap">{item.price} ₽</td>
+                        <td className="px-3 md:px-6 py-3 md:py-5 text-right font-bold text-primary text-sm md:text-lg whitespace-nowrap">от {item.price} ₽</td>
                       </tr>
                     ))}
                   </tbody>
