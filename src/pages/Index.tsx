@@ -296,9 +296,16 @@ export default function Index() {
 
       <section className="py-12 md:py-24 bg-gradient-to-br from-primary via-primary/95 to-primary text-white" id="process">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-10 md:mb-20">
-            От звонка до новоселья: как проходит работа
-          </h2>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-10 md:mb-20">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-center">
+              От звонка до новоселья: как проходит работа
+            </h2>
+            <img 
+              src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/bucket/95156b5c-1132-458b-a518-7b7eb5b41966.png" 
+              alt="Котик с камерой" 
+              className="h-16 md:h-20 w-16 md:w-20 object-contain"
+            />
+          </div>
           
           <div className="max-w-4xl mx-auto">
             {[
