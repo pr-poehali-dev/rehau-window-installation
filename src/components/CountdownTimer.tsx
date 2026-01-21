@@ -5,8 +5,8 @@ import Icon from '@/components/ui/icon';
 export default function CountdownTimer() {
   const calculateTimeLeft = () => {
     const now = new Date();
-    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
-    const difference = endOfMonth.getTime() - now.getTime();
+    const targetDate = new Date('2026-02-28T23:59:59');
+    const difference = targetDate.getTime() - now.getTime();
 
     return {
       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -52,7 +52,7 @@ export default function CountdownTimer() {
           </div>
           
           <p className="text-center text-white text-lg md:text-2xl mb-6 font-semibold">
-            Скидка 15% на все окна до конца месяца
+            Скидка 15% на все окна до 28.02.2026
           </p>
 
           <div className="flex gap-3 md:gap-6 justify-center mb-6">
