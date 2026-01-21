@@ -848,7 +848,7 @@ export default function Index() {
               <img 
                 src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/bucket/262683ba-8dc5-4835-b887-c0cebfd385c8.png" 
                 alt="Котик с камерой" 
-                className="h-20 w-20 object-contain opacity-80 hover:opacity-100 transition-opacity"
+                className="h-20 w-20 object-contain opacity-80 hover:opacity-100 transition-opacity mix-blend-lighten"
               />
             </div>
           </div>
