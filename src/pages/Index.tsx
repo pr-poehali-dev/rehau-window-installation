@@ -842,15 +842,8 @@ export default function Index() {
             </div>
           </div>
           
-          <div className="border-t border-white/20 pt-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <p className="text-white/60 text-sm">© 2025 «Оконный Порт». Все права защищены.</p>
-              <img 
-                src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/ff1f96dc-5e7a-434a-bff3-3796893bd57b.jpg" 
-                alt="Котик с камерой" 
-                className="h-20 w-20 object-contain opacity-80 hover:opacity-100 transition-opacity mix-blend-screen"
-              />
-            </div>
+          <div className="border-t border-white/20 pt-8 text-center text-white/60 text-sm">
+            <p>© 2025 «Оконный Порт». Все права защищены.</p>
           </div>
         </div>
       </footer>
