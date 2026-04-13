@@ -101,7 +101,7 @@ export default function Index() {
         <Button
           size="lg"
           onClick={() => scrollToSection('cta')}
-          className="group fixed bottom-8 right-8 z-50 bg-accent hover:bg-accent/90 text-white text-lg px-8 py-6 h-auto rounded-full shadow-2xl animate-bounce-slow transform hover:scale-105 transition-all duration-300 font-bold md:flex items-center gap-2 hidden"
+          className="group fixed bottom-8 right-4 md:right-8 z-50 bg-accent hover:bg-accent/90 text-white text-base md:text-lg px-5 md:px-8 py-4 md:py-6 h-auto rounded-full shadow-2xl animate-bounce-slow transform hover:scale-105 transition-all duration-300 font-bold flex items-center gap-2"
         >
           <div className="transition-all duration-300 group-hover:rotate-20 group-hover:brightness-125">
             <Icon name="Ruler" size={20} />
