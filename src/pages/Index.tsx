@@ -66,9 +66,11 @@ function BeforeAfterCard() {
 
 export default function Index() {
   const [isSticky, setIsSticky] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [currentH1, setCurrentH1] = useState(0);
   const [currentReview, setCurrentReview] = useState(0);
   const [currentPortfolio, setCurrentPortfolio] = useState(0);
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   const h1Variants = [
     "Сохраняйте тепло и экономьте до 40% на отоплении",
@@ -92,6 +94,7 @@ export default function Index() {
   }, []);
 
   const scrollToSection = (id: string) => {
+    setMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -159,8 +162,39 @@ export default function Index() {
               </div>
               <span>Заказать замер</span>
             </Button>
+            <button
+              className="md:hidden p-2 rounded-lg transition-colors"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label="Меню"
+            >
+              <Icon name={menuOpen ? 'X' : 'Menu'} size={26} className={isSticky ? 'text-primary' : 'text-white'} />
+            </button>
           </div>
         </div>
+
+        {menuOpen && (
+          <div className="md:hidden bg-white shadow-xl border-t border-gray-100 px-4 py-4 flex flex-col gap-1">
+            {[
+              { id: 'advantages', label: 'Преимущества' },
+              { id: 'process', label: 'Процесс' },
+              { id: 'portfolio', label: 'Примеры' },
+              { id: 'pricing', label: 'Цены' },
+              { id: 'reviews', label: 'Отзывы' },
+            ].map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-left text-base font-medium text-foreground hover:text-accent transition-colors py-3 border-b border-gray-100 last:border-0"
+              >
+                {item.label}
+              </button>
+            ))}
+            <a href="tel:+79242348920" className="flex items-center gap-2 text-base font-semibold text-primary pt-3">
+              <Icon name="Phone" size={18} />
+              8-924-234-89-20
+            </a>
+          </div>
+        )}
       </header>
 
       <section 
@@ -169,7 +203,7 @@ export default function Index() {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/6a717373-897f-411e-8eb8-9222ba76e0ac.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          backgroundAttachment: isIOS ? 'scroll' : 'fixed'
         }}
       >
         <div className="container mx-auto px-4 py-12 md:py-20">
