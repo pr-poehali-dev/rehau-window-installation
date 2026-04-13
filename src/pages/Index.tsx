@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -13,6 +13,56 @@ import CountdownTimer from '@/components/CountdownTimer';
 import SavingsCalculator from '@/components/SavingsCalculator';
 import WhyUs from '@/components/WhyUs';
 import TelegramWidget from '@/components/WhatsAppWidget';
+
+function BeforeAfterCard() {
+  const [sliderPos, setSliderPos] = useState(50);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+
+  const calcPos = (clientX: number) => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+    setSliderPos((x / rect.width) * 100);
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative overflow-hidden rounded-xl shadow-md select-none cursor-col-resize h-56 md:h-72"
+      onMouseDown={(e) => { isDragging.current = true; calcPos(e.clientX); }}
+      onMouseMove={(e) => { if (isDragging.current) calcPos(e.clientX); }}
+      onMouseUp={() => { isDragging.current = false; }}
+      onMouseLeave={() => { isDragging.current = false; }}
+      onTouchStart={(e) => calcPos(e.touches[0].clientX)}
+      onTouchMove={(e) => calcPos(e.touches[0].clientX)}
+    >
+      <img
+        src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/bucket/2c2efa23-6c9e-4bc6-8810-21410ceb146a.jpeg"
+        alt="После"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 overflow-hidden" style={{ width: `${sliderPos}%` }}>
+        <img
+          src="https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/bucket/959dd8b4-480d-4b6c-9cfe-504bd367f080.jpeg"
+          alt="До"
+          className="absolute inset-0 h-full object-cover"
+          style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100vw', maxWidth: 'none' }}
+        />
+      </div>
+      <div className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg pointer-events-none" style={{ left: `${sliderPos}%` }}>
+        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 8H1M1 8L3 6M1 8L3 10M11 8H15M15 8L13 6M15 8L13 10" stroke="#374151" strokeWidth="1.5" strokeLinecap="round"/></svg>
+        </div>
+      </div>
+      <div className="absolute top-3 left-3 bg-black/60 text-white text-xs font-semibold px-2 py-1 rounded pointer-events-none">ДО</div>
+      <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-2 py-1 rounded pointer-events-none">ПОСЛЕ</div>
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3 pointer-events-none">
+        <span className="text-white text-sm md:text-base font-medium">Остекление балкона</span>
+      </div>
+    </div>
+  );
+}
 
 export default function Index() {
   const [isSticky, setIsSticky] = useState(false);
@@ -450,8 +500,9 @@ export default function Index() {
             Фотографии готовых объектов и примеры монтажа
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {/* До/После — первая карточка */}
+            <BeforeAfterCard />
             {[
-              { src: "https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/abeb085c-ebf3-4c61-ae3f-2b260dd93383.jpg", label: "Монтаж в частном доме" },
               { src: "https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/59eb7000-c882-46bb-b587-126cac21ade0.jpg", label: "Панорамные окна, загородный дом" },
               { src: "https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/affc1941-9871-417d-81ea-6131f0022527.jpg", label: "Процесс установки" },
               { src: "https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/47e0b034-245c-40f9-8a6a-2046585eaf8a.jpg", label: "Эркерные окна, гостиная" },
