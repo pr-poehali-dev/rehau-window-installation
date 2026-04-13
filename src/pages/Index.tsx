@@ -440,6 +440,39 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Портфолио окон */}
+      <section className="py-12 md:py-24 bg-white" id="window-portfolio">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-4 md:mb-6">
+            Наши окна в готовых домах
+          </h2>
+          <p className="text-base md:text-xl text-center text-muted-foreground mb-8 md:mb-14">
+            Фотографии готовых объектов и примеры монтажа
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {[
+              { src: "https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/abeb085c-ebf3-4c61-ae3f-2b260dd93383.jpg", label: "Монтаж в частном доме" },
+              { src: "https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/59eb7000-c882-46bb-b587-126cac21ade0.jpg", label: "Панорамные окна, загородный дом" },
+              { src: "https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/affc1941-9871-417d-81ea-6131f0022527.jpg", label: "Процесс установки" },
+              { src: "https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/47e0b034-245c-40f9-8a6a-2046585eaf8a.jpg", label: "Эркерные окна, гостиная" },
+              { src: "https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/f520b73b-ec1f-479e-8a15-9a6a42823f27.jpg", label: "Герметизация и утепление" },
+              { src: "https://cdn.poehali.dev/projects/efbbbec9-9cfd-49b4-9ecb-fb6b9f63b213/files/62da1935-a1cf-482e-a13f-1fc79f9a3858.jpg", label: "Поворотно-откидные окна" },
+            ].map((item, i) => (
+              <div key={i} className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                <img
+                  src={item.src}
+                  alt={item.label}
+                  className="w-full h-56 md:h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3">
+                  <span className="text-white text-sm md:text-base font-medium">{item.label}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-12 md:py-24 bg-muted" id="pricing">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-4 md:mb-6">
